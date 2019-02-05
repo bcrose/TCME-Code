@@ -13,7 +13,7 @@ namespace Travel_Content_Management_Editor.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Places()
         {
             ViewBag.Message = "Your application description page.";
 
