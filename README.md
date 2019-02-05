@@ -9,5 +9,5 @@ toolset to integrate and/or sync data from external systems or sources; to build
 a mobile device; and to maintain their data, including text and media assets.
 
 [Old Repository](https://github.com/erincloehr/Travel-Content-Management-Editor-Code)  
-[Database](https://github.com/erincloehr/Travel-Content-Management-Editor-Database)
+[Database](https://github.com/erincloehr/Travel-Content-Management-Editor-Database)  
 [Doumentation](https://github.com/erincloehr/Travel-Content-Management-Editor)  
