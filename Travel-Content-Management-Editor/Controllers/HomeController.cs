@@ -13,17 +13,18 @@ namespace Travel_Content_Management_Editor.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Places()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        public ActionResult Tours()
+        { 
+            return View();
+        }
 
+        public ActionResult Events()
+        {
             return View();
         }
     }
