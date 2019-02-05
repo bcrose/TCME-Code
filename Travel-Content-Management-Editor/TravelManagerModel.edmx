@@ -1,0 +1,985 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TravelContentManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuildVersion">
+          <Key>
+            <PropertyRef Name="SystemInformationID" />
+          </Key>
+          <Property Name="SystemInformationID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Database Version" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="VersionDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorTime" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ErrorNumber" Type="int" Nullable="false" />
+          <Property Name="ErrorSeverity" Type="int" />
+          <Property Name="ErrorState" Type="int" />
+          <Property Name="ErrorProcedure" Type="nvarchar" MaxLength="126" />
+          <Property Name="ErrorLine" Type="int" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="4000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TOUR">
+          <Key>
+            <PropertyRef Name="TOUR_ID" />
+          </Key>
+          <Property Name="TOUR_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOUR_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CATEGORY_GUID" Type="uniqueidentifier" />
+          <Property Name="TOUR_NAME" Type="nvarchar(max)" />
+          <Property Name="TOUR_SUMMARY" Type="nvarchar(max)" />
+          <Property Name="TOUR_DESC" Type="nvarchar(max)" />
+          <Property Name="START_DATE" Type="datetime" />
+          <Property Name="END_DATE" Type="datetime" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="BOOK_NOW_URL" Type="nvarchar(max)" />
+          <Property Name="TOUR_IS_PUBLIC" Type="bit" />
+          <Property Name="DURATION" Type="nvarchar" MaxLength="50" />
+          <Property Name="COST" Type="nvarchar" MaxLength="200" />
+          <Property Name="GROUP_SIZE" Type="nvarchar" MaxLength="200" />
+          <Property Name="ADDITIONAL_INFO" Type="nvarchar(max)" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORY_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TYPE_GUID" Type="uniqueidentifier" />
+          <Property Name="CATEGORY_NAME" Type="nvarchar(max)" />
+          <Property Name="CATEGORY_DESC" Type="nvarchar(max)" />
+          <Property Name="COLOR_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="ORDER_BY" Type="numeric" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+          <Property Name="OWNER_ORGANIZATION_GUID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="TOUR_EVENT">
+          <Key>
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="EVENT_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EVENT_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TYPE_GUID" Type="uniqueidentifier" />
+          <Property Name="PLACE_GUID" Type="uniqueidentifier" />
+          <Property Name="CATEGORY_GUID" Type="uniqueidentifier" />
+          <Property Name="EVENT_TITLE" Type="nvarchar(max)" />
+          <Property Name="EVENT_DESC" Type="nvarchar(max)" />
+          <Property Name="START_DATE" Type="datetime" />
+          <Property Name="END_DATE" Type="datetime" />
+          <Property Name="DATE_TIME" Type="nvarchar(max)" />
+          <Property Name="VENUE" Type="nvarchar(max)" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="WEBSITE" Type="nvarchar(max)" />
+          <Property Name="AGE_RESTRICTION" Type="varchar(max)" />
+          <Property Name="COST" Type="varchar(max)" />
+          <Property Name="CONTACT_NAME" Type="nvarchar(max)" />
+          <Property Name="CONTACT_EMAIL" Type="nvarchar" MaxLength="200" />
+          <Property Name="CONTACT_PHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EXTERNAL_EVENT_ID" Type="nvarchar" MaxLength="200" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_MEDIA">
+          <Key>
+            <PropertyRef Name="MEDIA_ID" />
+          </Key>
+          <Property Name="MEDIA_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEDIA_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MEDIA_TYPE_GUID" Type="uniqueidentifier" />
+          <Property Name="MEDIA_TITLE" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="PALETTE_BACKGROUND" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="PALETTE_TEXT" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_MEDIA_TO_ITEM">
+          <Key>
+            <PropertyRef Name="MEDIA_TO_ITEM_ID" />
+          </Key>
+          <Property Name="MEDIA_TO_ITEM_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEDIA_TO_ITEM_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MEDIA_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ITEM_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ITEM_TYPE_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ORDER_BY" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_ORGANIZATION">
+          <Key>
+            <PropertyRef Name="ORGANIZATION_ID" />
+          </Key>
+          <Property Name="ORGANIZATION_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORGANIZATION_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ORGANIZATION_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="ORGANIZATION_DESC" Type="varchar(max)" />
+          <Property Name="FILTER_BY_LOCATION" Type="bit" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="200" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="URL" Type="varchar(max)" />
+          <Property Name="JOIN_CODE" Type="varchar" MaxLength="50" />
+          <Property Name="ORGANIZATION_IS_PUBLIC" Type="bit" />
+          <Property Name="CONTACT_NAME" Type="nvarchar" MaxLength="200" />
+          <Property Name="CONTACT_EMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="CONTACT_PHONE" Type="varchar" MaxLength="50" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_ORGANIZATION_TO_ITEM">
+          <Key>
+            <PropertyRef Name="ORGANIZATION_TO_ITEM_ID" />
+          </Key>
+          <Property Name="ORGANIZATION_TO_ITEM_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORGANIZATION_TO_ITEM_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ORGANIZATION_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ITEM_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ITEM_TYPE_GUID" Type="uniqueidentifier" />
+          <Property Name="ORDER_BY" Type="numeric" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_PATH">
+          <Key>
+            <PropertyRef Name="PATH_ID" />
+          </Key>
+          <Property Name="PATH_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PATH_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TOUR_GUID" Type="uniqueidentifier" />
+          <Property Name="PATH_NAME" Type="nvarchar(max)" />
+          <Property Name="PATH_DESC" Type="nvarchar(max)" />
+          <Property Name="TOTAL_DISTANCE" Type="float" />
+          <Property Name="MIN_LATITUDE" Type="float" />
+          <Property Name="MAX_LATITUDE" Type="float" />
+          <Property Name="MIN_LONGITUDE" Type="float" />
+          <Property Name="MAX_LONGITUDE" Type="float" />
+          <Property Name="GEOJSON_URL" Type="varchar" MaxLength="200" />
+          <Property Name="ORDER_BY" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_PLACE">
+          <Key>
+            <PropertyRef Name="PLACE_ID" />
+          </Key>
+          <Property Name="PLACE_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLACE_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GOOGLE_PLACE_ID" Type="varchar(max)" />
+          <Property Name="IS_DEFAULT_PLACE" Type="bit" Nullable="false" />
+          <Property Name="PLACE_NAME" Type="nvarchar(max)" />
+          <Property Name="PLACE_SUMMARY" Type="nvarchar(max)" />
+          <Property Name="PLACE_DESC" Type="nvarchar(max)" />
+          <Property Name="ADDRESS" Type="nvarchar(max)" />
+          <Property Name="PHONE" Type="varchar" MaxLength="50" />
+          <Property Name="WEBSITE" Type="nvarchar(max)" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_PLACE_TO_CATEGORY">
+          <Key>
+            <PropertyRef Name="PLACE_TO_CATEGORY_ID" />
+          </Key>
+          <Property Name="PLACE_TO_CATEGORY_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLACE_TO_CATEGORY_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PLACE_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CATEGORY_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_PLACE_TO_TOUR">
+          <Key>
+            <PropertyRef Name="PLACE_TO_TOUR_ID" />
+          </Key>
+          <Property Name="PLACE_TO_TOUR_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLACE_TO_TOUR_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TOUR_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PLACE_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ORDER_BY" Type="numeric" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+          <Property Name="PLACE_SUMMARY_OVERRIDE" Type="nvarchar(max)" />
+          <Property Name="PLACE_DESC_OVERRIDE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TOUR_TO_CATEGORY">
+          <Key>
+            <PropertyRef Name="TOUR_TO_CATEGORY_ID" />
+          </Key>
+          <Property Name="TOUR_TO_CATEGORY_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOUR_TO_CATEGORY_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TOUR_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CATEGORY_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TOUR_TYPE">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYPE_GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PARENT_TYPE_GUID" Type="uniqueidentifier" />
+          <Property Name="TYPE_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="GROUP_ID" Type="numeric" Precision="8" Scale="0" />
+          <Property Name="ORDER_BY" Type="numeric" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="UPDATED_BY" Type="uniqueidentifier" />
+          <Property Name="UPDATED_DATE_TIME" Type="datetime" />
+          <Property Name="DELETED_BY" Type="uniqueidentifier" />
+          <Property Name="DELETED_DATE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="TravelContentManagerModelStoreContainer">
+          <EntitySet Name="BuildVersion" EntityType="Self.BuildVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR" EntityType="Self.TOUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_CATEGORY" EntityType="Self.TOUR_CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_EVENT" EntityType="Self.TOUR_EVENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_MEDIA" EntityType="Self.TOUR_MEDIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_MEDIA_TO_ITEM" EntityType="Self.TOUR_MEDIA_TO_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_ORGANIZATION" EntityType="Self.TOUR_ORGANIZATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_ORGANIZATION_TO_ITEM" EntityType="Self.TOUR_ORGANIZATION_TO_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_PATH" EntityType="Self.TOUR_PATH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_PLACE" EntityType="Self.TOUR_PLACE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_PLACE_TO_CATEGORY" EntityType="Self.TOUR_PLACE_TO_CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_PLACE_TO_TOUR" EntityType="Self.TOUR_PLACE_TO_TOUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_TO_CATEGORY" EntityType="Self.TOUR_TO_CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR_TYPE" EntityType="Self.TOUR_TYPE" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TravelContentManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BuildVersion">
+          <Key>
+            <PropertyRef Name="SystemInformationID" />
+          </Key>
+          <Property Name="SystemInformationID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Database_Version" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VersionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ErrorNumber" Type="Int32" Nullable="false" />
+          <Property Name="ErrorSeverity" Type="Int32" />
+          <Property Name="ErrorState" Type="Int32" />
+          <Property Name="ErrorProcedure" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorLine" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TOUR">
+          <Key>
+            <PropertyRef Name="TOUR_ID" />
+          </Key>
+          <Property Name="TOUR_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TOUR_GUID" Type="Guid" Nullable="false" />
+          <Property Name="CATEGORY_GUID" Type="Guid" />
+          <Property Name="TOUR_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TOUR_SUMMARY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TOUR_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="DateTime" Precision="3" />
+          <Property Name="END_DATE" Type="DateTime" Precision="3" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BOOK_NOW_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TOUR_IS_PUBLIC" Type="Boolean" />
+          <Property Name="DURATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COST" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GROUP_SIZE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ADDITIONAL_INFO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_GUID" Type="Guid" Nullable="false" />
+          <Property Name="TYPE_GUID" Type="Guid" />
+          <Property Name="CATEGORY_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COLOR_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_BY" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="OWNER_ORGANIZATION_GUID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="TOUR_EVENT">
+          <Key>
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="EVENT_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EVENT_GUID" Type="Guid" Nullable="false" />
+          <Property Name="TYPE_GUID" Type="Guid" />
+          <Property Name="PLACE_GUID" Type="Guid" />
+          <Property Name="CATEGORY_GUID" Type="Guid" />
+          <Property Name="EVENT_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EVENT_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="DateTime" Precision="3" />
+          <Property Name="END_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DATE_TIME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VENUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="WEBSITE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AGE_RESTRICTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="COST" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CONTACT_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONTACT_EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CONTACT_PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EXTERNAL_EVENT_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_MEDIA">
+          <Key>
+            <PropertyRef Name="MEDIA_ID" />
+          </Key>
+          <Property Name="MEDIA_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEDIA_GUID" Type="Guid" Nullable="false" />
+          <Property Name="MEDIA_TYPE_GUID" Type="Guid" />
+          <Property Name="MEDIA_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PALETTE_BACKGROUND" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="PALETTE_TEXT" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_MEDIA_TO_ITEM">
+          <Key>
+            <PropertyRef Name="MEDIA_TO_ITEM_ID" />
+          </Key>
+          <Property Name="MEDIA_TO_ITEM_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEDIA_TO_ITEM_GUID" Type="Guid" Nullable="false" />
+          <Property Name="MEDIA_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ITEM_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ITEM_TYPE_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ORDER_BY" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_ORGANIZATION">
+          <Key>
+            <PropertyRef Name="ORGANIZATION_ID" />
+          </Key>
+          <Property Name="ORGANIZATION_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORGANIZATION_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ORGANIZATION_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ORGANIZATION_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FILTER_BY_LOCATION" Type="Boolean" />
+          <Property Name="LOCATION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JOIN_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ORGANIZATION_IS_PUBLIC" Type="Boolean" />
+          <Property Name="CONTACT_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CONTACT_EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CONTACT_PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_ORGANIZATION_TO_ITEM">
+          <Key>
+            <PropertyRef Name="ORGANIZATION_TO_ITEM_ID" />
+          </Key>
+          <Property Name="ORGANIZATION_TO_ITEM_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORGANIZATION_TO_ITEM_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ORGANIZATION_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ITEM_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ITEM_TYPE_GUID" Type="Guid" />
+          <Property Name="ORDER_BY" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_PATH">
+          <Key>
+            <PropertyRef Name="PATH_ID" />
+          </Key>
+          <Property Name="PATH_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PATH_GUID" Type="Guid" Nullable="false" />
+          <Property Name="TOUR_GUID" Type="Guid" />
+          <Property Name="PATH_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PATH_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TOTAL_DISTANCE" Type="Double" />
+          <Property Name="MIN_LATITUDE" Type="Double" />
+          <Property Name="MAX_LATITUDE" Type="Double" />
+          <Property Name="MIN_LONGITUDE" Type="Double" />
+          <Property Name="MAX_LONGITUDE" Type="Double" />
+          <Property Name="GEOJSON_URL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_BY" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="Guid" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_PLACE">
+          <Key>
+            <PropertyRef Name="PLACE_ID" />
+          </Key>
+          <Property Name="PLACE_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLACE_GUID" Type="Guid" Nullable="false" />
+          <Property Name="GOOGLE_PLACE_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IS_DEFAULT_PLACE" Type="Boolean" Nullable="false" />
+          <Property Name="PLACE_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLACE_SUMMARY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLACE_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WEBSITE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_PLACE_TO_CATEGORY">
+          <Key>
+            <PropertyRef Name="PLACE_TO_CATEGORY_ID" />
+          </Key>
+          <Property Name="PLACE_TO_CATEGORY_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLACE_TO_CATEGORY_GUID" Type="Guid" Nullable="false" />
+          <Property Name="PLACE_GUID" Type="Guid" Nullable="false" />
+          <Property Name="CATEGORY_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_PLACE_TO_TOUR">
+          <Key>
+            <PropertyRef Name="PLACE_TO_TOUR_ID" />
+          </Key>
+          <Property Name="PLACE_TO_TOUR_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLACE_TO_TOUR_GUID" Type="Guid" Nullable="false" />
+          <Property Name="TOUR_GUID" Type="Guid" Nullable="false" />
+          <Property Name="PLACE_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ORDER_BY" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="PLACE_SUMMARY_OVERRIDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLACE_DESC_OVERRIDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TOUR_TO_CATEGORY">
+          <Key>
+            <PropertyRef Name="TOUR_TO_CATEGORY_ID" />
+          </Key>
+          <Property Name="TOUR_TO_CATEGORY_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TOUR_TO_CATEGORY_GUID" Type="Guid" Nullable="false" />
+          <Property Name="TOUR_GUID" Type="Guid" Nullable="false" />
+          <Property Name="CATEGORY_GUID" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TOUR_TYPE">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYPE_GUID" Type="Guid" Nullable="false" />
+          <Property Name="PARENT_TYPE_GUID" Type="Guid" />
+          <Property Name="TYPE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GROUP_ID" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="ORDER_BY" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="ENTERED_BY" Type="Guid" Nullable="false" />
+          <Property Name="ENTERED_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Guid" />
+          <Property Name="UPDATED_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Guid" />
+          <Property Name="DELETED_DATE_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="TravelContentManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuildVersions" EntityType="Self.BuildVersion" />
+          <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLog" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TOURs" EntityType="Self.TOUR" />
+          <EntitySet Name="TOUR_CATEGORY" EntityType="Self.TOUR_CATEGORY" />
+          <EntitySet Name="TOUR_EVENT" EntityType="Self.TOUR_EVENT" />
+          <EntitySet Name="TOUR_MEDIA" EntityType="Self.TOUR_MEDIA" />
+          <EntitySet Name="TOUR_MEDIA_TO_ITEM" EntityType="Self.TOUR_MEDIA_TO_ITEM" />
+          <EntitySet Name="TOUR_ORGANIZATION" EntityType="Self.TOUR_ORGANIZATION" />
+          <EntitySet Name="TOUR_ORGANIZATION_TO_ITEM" EntityType="Self.TOUR_ORGANIZATION_TO_ITEM" />
+          <EntitySet Name="TOUR_PATH" EntityType="Self.TOUR_PATH" />
+          <EntitySet Name="TOUR_PLACE" EntityType="Self.TOUR_PLACE" />
+          <EntitySet Name="TOUR_PLACE_TO_CATEGORY" EntityType="Self.TOUR_PLACE_TO_CATEGORY" />
+          <EntitySet Name="TOUR_PLACE_TO_TOUR" EntityType="Self.TOUR_PLACE_TO_TOUR" />
+          <EntitySet Name="TOUR_TO_CATEGORY" EntityType="Self.TOUR_TO_CATEGORY" />
+          <EntitySet Name="TOUR_TYPE" EntityType="Self.TOUR_TYPE" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TravelContentManagerModelStoreContainer" CdmEntityContainer="TravelContentManagerEntities">
+          <EntitySetMapping Name="BuildVersions">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.BuildVersion">
+              <MappingFragment StoreEntitySet="BuildVersion">
+                <ScalarProperty Name="SystemInformationID" ColumnName="SystemInformationID" />
+                <ScalarProperty Name="Database_Version" ColumnName="Database Version" />
+                <ScalarProperty Name="VersionDate" ColumnName="VersionDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+                <ScalarProperty Name="ErrorTime" ColumnName="ErrorTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOURs">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR">
+              <MappingFragment StoreEntitySet="TOUR">
+                <ScalarProperty Name="TOUR_ID" ColumnName="TOUR_ID" />
+                <ScalarProperty Name="TOUR_GUID" ColumnName="TOUR_GUID" />
+                <ScalarProperty Name="CATEGORY_GUID" ColumnName="CATEGORY_GUID" />
+                <ScalarProperty Name="TOUR_NAME" ColumnName="TOUR_NAME" />
+                <ScalarProperty Name="TOUR_SUMMARY" ColumnName="TOUR_SUMMARY" />
+                <ScalarProperty Name="TOUR_DESC" ColumnName="TOUR_DESC" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="BOOK_NOW_URL" ColumnName="BOOK_NOW_URL" />
+                <ScalarProperty Name="TOUR_IS_PUBLIC" ColumnName="TOUR_IS_PUBLIC" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="GROUP_SIZE" ColumnName="GROUP_SIZE" />
+                <ScalarProperty Name="ADDITIONAL_INFO" ColumnName="ADDITIONAL_INFO" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_CATEGORY">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_CATEGORY">
+              <MappingFragment StoreEntitySet="TOUR_CATEGORY">
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="CATEGORY_GUID" ColumnName="CATEGORY_GUID" />
+                <ScalarProperty Name="TYPE_GUID" ColumnName="TYPE_GUID" />
+                <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
+                <ScalarProperty Name="CATEGORY_DESC" ColumnName="CATEGORY_DESC" />
+                <ScalarProperty Name="COLOR_CODE" ColumnName="COLOR_CODE" />
+                <ScalarProperty Name="ORDER_BY" ColumnName="ORDER_BY" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+                <ScalarProperty Name="OWNER_ORGANIZATION_GUID" ColumnName="OWNER_ORGANIZATION_GUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_EVENT">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_EVENT">
+              <MappingFragment StoreEntitySet="TOUR_EVENT">
+                <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+                <ScalarProperty Name="EVENT_GUID" ColumnName="EVENT_GUID" />
+                <ScalarProperty Name="TYPE_GUID" ColumnName="TYPE_GUID" />
+                <ScalarProperty Name="PLACE_GUID" ColumnName="PLACE_GUID" />
+                <ScalarProperty Name="CATEGORY_GUID" ColumnName="CATEGORY_GUID" />
+                <ScalarProperty Name="EVENT_TITLE" ColumnName="EVENT_TITLE" />
+                <ScalarProperty Name="EVENT_DESC" ColumnName="EVENT_DESC" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="DATE_TIME" ColumnName="DATE_TIME" />
+                <ScalarProperty Name="VENUE" ColumnName="VENUE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+                <ScalarProperty Name="AGE_RESTRICTION" ColumnName="AGE_RESTRICTION" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="CONTACT_NAME" ColumnName="CONTACT_NAME" />
+                <ScalarProperty Name="CONTACT_EMAIL" ColumnName="CONTACT_EMAIL" />
+                <ScalarProperty Name="CONTACT_PHONE" ColumnName="CONTACT_PHONE" />
+                <ScalarProperty Name="EXTERNAL_EVENT_ID" ColumnName="EXTERNAL_EVENT_ID" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_MEDIA">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_MEDIA">
+              <MappingFragment StoreEntitySet="TOUR_MEDIA">
+                <ScalarProperty Name="MEDIA_ID" ColumnName="MEDIA_ID" />
+                <ScalarProperty Name="MEDIA_GUID" ColumnName="MEDIA_GUID" />
+                <ScalarProperty Name="MEDIA_TYPE_GUID" ColumnName="MEDIA_TYPE_GUID" />
+                <ScalarProperty Name="MEDIA_TITLE" ColumnName="MEDIA_TITLE" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="PALETTE_BACKGROUND" ColumnName="PALETTE_BACKGROUND" />
+                <ScalarProperty Name="PALETTE_TEXT" ColumnName="PALETTE_TEXT" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_MEDIA_TO_ITEM">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_MEDIA_TO_ITEM">
+              <MappingFragment StoreEntitySet="TOUR_MEDIA_TO_ITEM">
+                <ScalarProperty Name="MEDIA_TO_ITEM_ID" ColumnName="MEDIA_TO_ITEM_ID" />
+                <ScalarProperty Name="MEDIA_TO_ITEM_GUID" ColumnName="MEDIA_TO_ITEM_GUID" />
+                <ScalarProperty Name="MEDIA_GUID" ColumnName="MEDIA_GUID" />
+                <ScalarProperty Name="ITEM_GUID" ColumnName="ITEM_GUID" />
+                <ScalarProperty Name="ITEM_TYPE_GUID" ColumnName="ITEM_TYPE_GUID" />
+                <ScalarProperty Name="ORDER_BY" ColumnName="ORDER_BY" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_ORGANIZATION">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_ORGANIZATION">
+              <MappingFragment StoreEntitySet="TOUR_ORGANIZATION">
+                <ScalarProperty Name="ORGANIZATION_ID" ColumnName="ORGANIZATION_ID" />
+                <ScalarProperty Name="ORGANIZATION_GUID" ColumnName="ORGANIZATION_GUID" />
+                <ScalarProperty Name="ORGANIZATION_NAME" ColumnName="ORGANIZATION_NAME" />
+                <ScalarProperty Name="ORGANIZATION_DESC" ColumnName="ORGANIZATION_DESC" />
+                <ScalarProperty Name="FILTER_BY_LOCATION" ColumnName="FILTER_BY_LOCATION" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="JOIN_CODE" ColumnName="JOIN_CODE" />
+                <ScalarProperty Name="ORGANIZATION_IS_PUBLIC" ColumnName="ORGANIZATION_IS_PUBLIC" />
+                <ScalarProperty Name="CONTACT_NAME" ColumnName="CONTACT_NAME" />
+                <ScalarProperty Name="CONTACT_EMAIL" ColumnName="CONTACT_EMAIL" />
+                <ScalarProperty Name="CONTACT_PHONE" ColumnName="CONTACT_PHONE" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_ORGANIZATION_TO_ITEM">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_ORGANIZATION_TO_ITEM">
+              <MappingFragment StoreEntitySet="TOUR_ORGANIZATION_TO_ITEM">
+                <ScalarProperty Name="ORGANIZATION_TO_ITEM_ID" ColumnName="ORGANIZATION_TO_ITEM_ID" />
+                <ScalarProperty Name="ORGANIZATION_TO_ITEM_GUID" ColumnName="ORGANIZATION_TO_ITEM_GUID" />
+                <ScalarProperty Name="ORGANIZATION_GUID" ColumnName="ORGANIZATION_GUID" />
+                <ScalarProperty Name="ITEM_GUID" ColumnName="ITEM_GUID" />
+                <ScalarProperty Name="ITEM_TYPE_GUID" ColumnName="ITEM_TYPE_GUID" />
+                <ScalarProperty Name="ORDER_BY" ColumnName="ORDER_BY" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_PATH">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_PATH">
+              <MappingFragment StoreEntitySet="TOUR_PATH">
+                <ScalarProperty Name="PATH_ID" ColumnName="PATH_ID" />
+                <ScalarProperty Name="PATH_GUID" ColumnName="PATH_GUID" />
+                <ScalarProperty Name="TOUR_GUID" ColumnName="TOUR_GUID" />
+                <ScalarProperty Name="PATH_NAME" ColumnName="PATH_NAME" />
+                <ScalarProperty Name="PATH_DESC" ColumnName="PATH_DESC" />
+                <ScalarProperty Name="TOTAL_DISTANCE" ColumnName="TOTAL_DISTANCE" />
+                <ScalarProperty Name="MIN_LATITUDE" ColumnName="MIN_LATITUDE" />
+                <ScalarProperty Name="MAX_LATITUDE" ColumnName="MAX_LATITUDE" />
+                <ScalarProperty Name="MIN_LONGITUDE" ColumnName="MIN_LONGITUDE" />
+                <ScalarProperty Name="MAX_LONGITUDE" ColumnName="MAX_LONGITUDE" />
+                <ScalarProperty Name="GEOJSON_URL" ColumnName="GEOJSON_URL" />
+                <ScalarProperty Name="ORDER_BY" ColumnName="ORDER_BY" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_PLACE">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_PLACE">
+              <MappingFragment StoreEntitySet="TOUR_PLACE">
+                <ScalarProperty Name="PLACE_ID" ColumnName="PLACE_ID" />
+                <ScalarProperty Name="PLACE_GUID" ColumnName="PLACE_GUID" />
+                <ScalarProperty Name="GOOGLE_PLACE_ID" ColumnName="GOOGLE_PLACE_ID" />
+                <ScalarProperty Name="IS_DEFAULT_PLACE" ColumnName="IS_DEFAULT_PLACE" />
+                <ScalarProperty Name="PLACE_NAME" ColumnName="PLACE_NAME" />
+                <ScalarProperty Name="PLACE_SUMMARY" ColumnName="PLACE_SUMMARY" />
+                <ScalarProperty Name="PLACE_DESC" ColumnName="PLACE_DESC" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_PLACE_TO_CATEGORY">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_PLACE_TO_CATEGORY">
+              <MappingFragment StoreEntitySet="TOUR_PLACE_TO_CATEGORY">
+                <ScalarProperty Name="PLACE_TO_CATEGORY_ID" ColumnName="PLACE_TO_CATEGORY_ID" />
+                <ScalarProperty Name="PLACE_TO_CATEGORY_GUID" ColumnName="PLACE_TO_CATEGORY_GUID" />
+                <ScalarProperty Name="PLACE_GUID" ColumnName="PLACE_GUID" />
+                <ScalarProperty Name="CATEGORY_GUID" ColumnName="CATEGORY_GUID" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_PLACE_TO_TOUR">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_PLACE_TO_TOUR">
+              <MappingFragment StoreEntitySet="TOUR_PLACE_TO_TOUR">
+                <ScalarProperty Name="PLACE_TO_TOUR_ID" ColumnName="PLACE_TO_TOUR_ID" />
+                <ScalarProperty Name="PLACE_TO_TOUR_GUID" ColumnName="PLACE_TO_TOUR_GUID" />
+                <ScalarProperty Name="TOUR_GUID" ColumnName="TOUR_GUID" />
+                <ScalarProperty Name="PLACE_GUID" ColumnName="PLACE_GUID" />
+                <ScalarProperty Name="ORDER_BY" ColumnName="ORDER_BY" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+                <ScalarProperty Name="PLACE_SUMMARY_OVERRIDE" ColumnName="PLACE_SUMMARY_OVERRIDE" />
+                <ScalarProperty Name="PLACE_DESC_OVERRIDE" ColumnName="PLACE_DESC_OVERRIDE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_TO_CATEGORY">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_TO_CATEGORY">
+              <MappingFragment StoreEntitySet="TOUR_TO_CATEGORY">
+                <ScalarProperty Name="TOUR_TO_CATEGORY_ID" ColumnName="TOUR_TO_CATEGORY_ID" />
+                <ScalarProperty Name="TOUR_TO_CATEGORY_GUID" ColumnName="TOUR_TO_CATEGORY_GUID" />
+                <ScalarProperty Name="TOUR_GUID" ColumnName="TOUR_GUID" />
+                <ScalarProperty Name="CATEGORY_GUID" ColumnName="CATEGORY_GUID" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR_TYPE">
+            <EntityTypeMapping TypeName="TravelContentManagerModel.TOUR_TYPE">
+              <MappingFragment StoreEntitySet="TOUR_TYPE">
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="TYPE_GUID" ColumnName="TYPE_GUID" />
+                <ScalarProperty Name="PARENT_TYPE_GUID" ColumnName="PARENT_TYPE_GUID" />
+                <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+                <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+                <ScalarProperty Name="ORDER_BY" ColumnName="ORDER_BY" />
+                <ScalarProperty Name="ENTERED_BY" ColumnName="ENTERED_BY" />
+                <ScalarProperty Name="ENTERED_DATE_TIME" ColumnName="ENTERED_DATE_TIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE_TIME" ColumnName="UPDATED_DATE_TIME" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE_TIME" ColumnName="DELETED_DATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
