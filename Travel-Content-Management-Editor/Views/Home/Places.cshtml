@@ -1,4 +1,31 @@
 ﻿@{
-    ViewBag.Title = "Places";
+                /**/
+
+                ViewBag.Title = "Places";
 }
 <h2>@ViewBag.Title</h2>
+
+<form action="/Form/FormOne" method="post">
+    Place ID:<br />
+    <input type="number" name="placeId" /><br />
+    Google Place Id: <br />
+    <input type="text" name="googlePlaceId" /><br />
+    Place Name: <br />
+    <input type="text" name="placeName" /><br />
+    Summary:<br />
+    <textarea name="summary" rows="10" cols="100"></textarea><br />
+    Place Description:<br />
+    <textarea name="placeDescription" rows="10" cols="100"></textarea><br />
+    Address: <br />
+    <input type="text" name="address" /><br />
+    Phone Number: <br />
+    <input type="text" name="phoneNumber" /><br />
+    Website: <br />
+    <input type="text" name="website" /><br />
+    Lattitude: <br />
+    <input type="number" name="lattitude" /><br />
+    Longitude: <br />
+    <input type="number" name="longitude" /><br />
+    <input type="submit" value="Add Place" />
+
+</form>
