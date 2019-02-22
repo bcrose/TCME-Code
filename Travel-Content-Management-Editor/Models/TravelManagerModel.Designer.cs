@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Ben\Source\Repos\TCME-Code\Travel-Content-Management-Editor\TravelManagerModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\erinc\Source\Repos\bcrose\TCME-Code\Travel-Content-Management-Editor\Models\TravelManagerModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

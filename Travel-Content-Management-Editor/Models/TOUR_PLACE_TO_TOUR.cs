@@ -7,22 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Travel_Content_Management_Editor
+namespace Travel_Content_Management_Editor.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TOUR_PLACE_TO_CATEGORY
+    public partial class TOUR_PLACE_TO_TOUR
     {
-        public decimal PLACE_TO_CATEGORY_ID { get; set; }
-        public System.Guid PLACE_TO_CATEGORY_GUID { get; set; }
+        public decimal PLACE_TO_TOUR_ID { get; set; }
+        public System.Guid PLACE_TO_TOUR_GUID { get; set; }
+        public System.Guid TOUR_GUID { get; set; }
         public System.Guid PLACE_GUID { get; set; }
-        public System.Guid CATEGORY_GUID { get; set; }
+        public Nullable<decimal> ORDER_BY { get; set; }
         public System.Guid ENTERED_BY { get; set; }
         public System.DateTime ENTERED_DATE_TIME { get; set; }
         public Nullable<System.Guid> UPDATED_BY { get; set; }
         public Nullable<System.DateTime> UPDATED_DATE_TIME { get; set; }
         public Nullable<System.Guid> DELETED_BY { get; set; }
         public Nullable<System.DateTime> DELETED_DATE_TIME { get; set; }
+        public string PLACE_SUMMARY_OVERRIDE { get; set; }
+        public string PLACE_DESC_OVERRIDE { get; set; }
     }
 }

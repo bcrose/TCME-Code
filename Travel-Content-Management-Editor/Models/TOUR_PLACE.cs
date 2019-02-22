@@ -7,19 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Travel_Content_Management_Editor
+namespace Travel_Content_Management_Editor.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TOUR_TYPE
+    public partial class TOUR_PLACE
     {
-        public decimal TYPE_ID { get; set; }
-        public System.Guid TYPE_GUID { get; set; }
-        public Nullable<System.Guid> PARENT_TYPE_GUID { get; set; }
-        public string TYPE_NAME { get; set; }
-        public Nullable<decimal> GROUP_ID { get; set; }
-        public Nullable<decimal> ORDER_BY { get; set; }
+        public decimal PLACE_ID { get; set; }
+        public System.Guid PLACE_GUID { get; set; }
+        public string GOOGLE_PLACE_ID { get; set; }
+        public bool IS_DEFAULT_PLACE { get; set; }
+        public string PLACE_NAME { get; set; }
+        public string PLACE_SUMMARY { get; set; }
+        public string PLACE_DESC { get; set; }
+        public string ADDRESS { get; set; }
+        public string PHONE { get; set; }
+        public string WEBSITE { get; set; }
+        public Nullable<double> LATITUDE { get; set; }
+        public Nullable<double> LONGITUDE { get; set; }
         public System.Guid ENTERED_BY { get; set; }
         public System.DateTime ENTERED_DATE_TIME { get; set; }
         public Nullable<System.Guid> UPDATED_BY { get; set; }

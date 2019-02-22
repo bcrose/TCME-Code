@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Travel_Content_Management_Editor
+namespace Travel_Content_Management_Editor.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TOUR_ORGANIZATION_TO_ITEM
+    public partial class TOUR_TYPE
     {
-        public decimal ORGANIZATION_TO_ITEM_ID { get; set; }
-        public System.Guid ORGANIZATION_TO_ITEM_GUID { get; set; }
-        public System.Guid ORGANIZATION_GUID { get; set; }
-        public System.Guid ITEM_GUID { get; set; }
-        public Nullable<System.Guid> ITEM_TYPE_GUID { get; set; }
+        public decimal TYPE_ID { get; set; }
+        public System.Guid TYPE_GUID { get; set; }
+        public Nullable<System.Guid> PARENT_TYPE_GUID { get; set; }
+        public string TYPE_NAME { get; set; }
+        public Nullable<decimal> GROUP_ID { get; set; }
         public Nullable<decimal> ORDER_BY { get; set; }
         public System.Guid ENTERED_BY { get; set; }
         public System.DateTime ENTERED_DATE_TIME { get; set; }

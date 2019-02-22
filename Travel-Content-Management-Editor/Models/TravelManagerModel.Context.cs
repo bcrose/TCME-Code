@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Travel_Content_Management_Editor
+namespace Travel_Content_Management_Editor.Models
 {
     using System;
     using System.Data.Entity;

@@ -228,12 +228,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BuildVersion.cs">
+    <Compile Include="Controllers\PlacesController.cs" />
+    <Compile Include="Models\BuildVersion.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="ErrorLog.cs">
+    <Compile Include="Models\ErrorLog.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -241,59 +242,59 @@
     </Compile>
     <Compile Include="Models\PlacesFormData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR.cs">
+    <Compile Include="Models\TOUR.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_CATEGORY.cs">
+    <Compile Include="Models\TOUR_CATEGORY.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_EVENT.cs">
+    <Compile Include="Models\TOUR_EVENT.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_MEDIA.cs">
+    <Compile Include="Models\TOUR_MEDIA.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_MEDIA_TO_ITEM.cs">
+    <Compile Include="Models\TOUR_MEDIA_TO_ITEM.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_ORGANIZATION.cs">
+    <Compile Include="Models\TOUR_ORGANIZATION.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_ORGANIZATION_TO_ITEM.cs">
+    <Compile Include="Models\TOUR_ORGANIZATION_TO_ITEM.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_PATH.cs">
+    <Compile Include="Models\TOUR_PATH.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_PLACE.cs">
+    <Compile Include="Models\TOUR_PLACE.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_PLACE_TO_CATEGORY.cs">
+    <Compile Include="Models\TOUR_PLACE_TO_CATEGORY.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_PLACE_TO_TOUR.cs">
+    <Compile Include="Models\TOUR_PLACE_TO_TOUR.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_TO_CATEGORY.cs">
+    <Compile Include="Models\TOUR_TO_CATEGORY.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TOUR_TYPE.cs">
+    <Compile Include="Models\TOUR_TYPE.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TravelManagerModel.Context.cs">
+    <Compile Include="Models\TravelManagerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TravelManagerModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="TravelManagerModel.cs">
+    <Compile Include="Models\TravelManagerModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TravelManagerModel.Designer.cs">
+    <Compile Include="Models\TravelManagerModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TravelManagerModel.edmx</DependentUpon>
@@ -324,12 +325,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="TravelManagerModel.Context.tt">
+    <Content Include="Models\TravelManagerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TravelManagerModel.Context.cs</LastGenOutput>
       <DependentUpon>TravelManagerModel.edmx</DependentUpon>
     </Content>
-    <Content Include="TravelManagerModel.tt">
+    <Content Include="Models\TravelManagerModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TravelManagerModel.edmx</DependentUpon>
       <LastGenOutput>TravelManagerModel.cs</LastGenOutput>
@@ -348,11 +349,11 @@
     <Content Include="Views\Home\Tours.cshtml" />
     <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <EntityDeploy Include="TravelManagerModel.edmx">
+    <EntityDeploy Include="Models\TravelManagerModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TravelManagerModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="TravelManagerModel.edmx.diagram">
+    <Content Include="Models\TravelManagerModel.edmx.diagram">
       <DependentUpon>TravelManagerModel.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Home\Places.cshtml" />
@@ -360,6 +361,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Form\" />
+    <Folder Include="Views\Places\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

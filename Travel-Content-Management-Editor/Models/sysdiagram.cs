@@ -7,16 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Travel_Content_Management_Editor
+namespace Travel_Content_Management_Editor.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class BuildVersion
+    public partial class sysdiagram
     {
-        public byte SystemInformationID { get; set; }
-        public string Database_Version { get; set; }
-        public System.DateTime VersionDate { get; set; }
-        public System.DateTime ModifiedDate { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

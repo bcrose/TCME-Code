@@ -1,9 +1,48 @@
-﻿@{
-                /**/
+﻿@model IEnumerable<Travel_Content_Management_Editor.Models.TOUR_PLACE>
 
-                ViewBag.Title = "Places";
+@{
+    ViewBag.Title = "Places";
 }
-<h2>@ViewBag.Title</h2>
+
+<h2>Places</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            NAME
+        </th>
+        <th>
+            SUMMARY
+        </th>
+        <th>
+            DESCRIPTION
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PLACE_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PLACE_ID }) |
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PLACE_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PLACE_SUMMARY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PLACE_DESC)
+        </td>
+    </tr>
+    }
+
+</table>
 
 <form action="/Form/FormOne" method="post">
     Place ID:<br />
@@ -29,3 +68,4 @@
     <input type="submit" value="Add Place" />
 
 </form>
+

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Travel_Content_Management_Editor.Models;
 
 namespace Travel_Content_Management_Editor.Controllers
 {
@@ -12,6 +13,7 @@ namespace Travel_Content_Management_Editor.Controllers
         public ActionResult Index()
         {
             return View();
+
         }
         [HttpPost]
         public ActionResult FormOne(decimal placeId, string googlePlaceId, string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)

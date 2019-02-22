@@ -26,26 +26,26 @@ namespace Travel_Content_Management_Editor.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
+        public void Places()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            PlacesController controller = new PlacesController();
 
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = controller.Places() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void Contact()
+        public void Events()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.Events() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

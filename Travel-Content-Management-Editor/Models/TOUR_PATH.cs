@@ -7,21 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Travel_Content_Management_Editor
+namespace Travel_Content_Management_Editor.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TOUR_MEDIA
+    public partial class TOUR_PATH
     {
-        public decimal MEDIA_ID { get; set; }
-        public System.Guid MEDIA_GUID { get; set; }
-        public Nullable<System.Guid> MEDIA_TYPE_GUID { get; set; }
-        public string MEDIA_TITLE { get; set; }
-        public string URL { get; set; }
-        public Nullable<decimal> PALETTE_BACKGROUND { get; set; }
-        public Nullable<decimal> PALETTE_TEXT { get; set; }
-        public System.Guid ENTERED_BY { get; set; }
+        public decimal PATH_ID { get; set; }
+        public System.Guid PATH_GUID { get; set; }
+        public Nullable<System.Guid> TOUR_GUID { get; set; }
+        public string PATH_NAME { get; set; }
+        public string PATH_DESC { get; set; }
+        public Nullable<double> TOTAL_DISTANCE { get; set; }
+        public Nullable<double> MIN_LATITUDE { get; set; }
+        public Nullable<double> MAX_LATITUDE { get; set; }
+        public Nullable<double> MIN_LONGITUDE { get; set; }
+        public Nullable<double> MAX_LONGITUDE { get; set; }
+        public string GEOJSON_URL { get; set; }
+        public decimal ORDER_BY { get; set; }
+        public Nullable<System.Guid> ENTERED_BY { get; set; }
         public System.DateTime ENTERED_DATE_TIME { get; set; }
         public Nullable<System.Guid> UPDATED_BY { get; set; }
         public Nullable<System.DateTime> UPDATED_DATE_TIME { get; set; }
