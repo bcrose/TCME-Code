@@ -7,7 +7,7 @@ using Travel_Content_Management_Editor.Models;
 
 namespace Travel_Content_Management_Editor.Controllers
 {
-    public class FormController : Controller
+    public class Places : Controller
     {
         // GET: Form
         public ActionResult Index()

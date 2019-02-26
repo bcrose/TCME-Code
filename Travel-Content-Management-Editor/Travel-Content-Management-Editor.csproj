@@ -231,7 +231,7 @@
     <Compile Include="Models\BuildVersion.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\Places.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\ErrorLog.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
