@@ -39,7 +39,7 @@ namespace Travel_Content_Management_Editor.Controllers
             };
             context.TOUR_PLACE.Add(place);
             context.SaveChanges();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home", "Places");
         }
     }
 }

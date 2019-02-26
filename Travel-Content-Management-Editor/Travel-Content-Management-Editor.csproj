@@ -228,7 +228,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Models\BuildVersion.cs">
       <DependentUpon>TravelManagerModel.tt</DependentUpon>
     </Compile>
