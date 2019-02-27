@@ -1,34 +1,67 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        /* Set the size of the div element that contains the map */
-        #map {
-            height: 400px; /* The height is 400 pixels */
-            width: 100%; /* The width is the width of the web page */
-        }
-    </style>
-</head>
-<body>
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script>
-      function initMap() {
+﻿@model IEnumerable<Travel_Content_Management_Editor.Models.TOUR>
 
-      var startlocation = {lat: -25.344, lng: 131.036};
+@{
+    ViewBag.Title = "Tours";
+}
 
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 4, center: startlocation});
+<h2>Tours</h2>
 
-      var marker = new google.maps.Marker({position: startlocation, map: map});
-      }
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvNyUzVPp4lgZLtMbUwAot08O1YZ36M6A&callback=initMap"></script>
-</body>
-</html>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            DESCRIPTION
+        </th>
+        <th>
+            START DATE
+        </th>
+        <th>
+            END DATE
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TOUR_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TOUR_ID }) |
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOUR_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.START_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.END_DATE)
+        </td>
+    </tr>
+    }
+</table>
+<form action="/Form/TourForm" method="post" autocomplete="off">
+    Tour ID:<br />
+    <input type="number" name="tourId" /><br />
+    Tour Name: <br />
+    <input type="text" name="tourName" /><br />
+    Summary:<br />
+    <textarea name="summary" rows="10" cols="100"></textarea><br />
+    Tour Description:<br />
+    <textarea name="tourDescription" rows="10" cols="100"></textarea><br />
+    URL: <br />
+    <input type="text" name="url" /><br />
+    Book Now Url: <br />
+    <input type="text" name="bookNowUrl" /><br />
+    Duration: <br />
+    <input type="text" name="duration" /><br />
+    Cost: <br />
+    <input type="text" name="cost" /><br />
+    Group Size: <br />
+    <input type="text" name="groupSize" /><br />
+    Additional Info: <br />
+    <input type="text" name="additionalInfo" /><br />
+    <input type="submit" value="Submit Tour" />
+</form>
