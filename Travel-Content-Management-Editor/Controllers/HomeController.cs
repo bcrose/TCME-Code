@@ -20,8 +20,9 @@ namespace Travel_Content_Management_Editor.Controllers
         }
 
         public ActionResult Tours()
-        { 
-            return View();
+        {
+            var entities = new Models.TravelContentManagerEntities();
+            return View(entities.TOURs.ToList());
         }
 
         public ActionResult Events()
