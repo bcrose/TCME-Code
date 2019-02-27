@@ -66,5 +66,34 @@ namespace Travel_Content_Management_Editor.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Home", "Places");
         }
+        [HttpPost]
+        public ActionResult PlaceToTourForm(string tour, string place)
+        {
+            using (var context = new TravelContentManagerEntities())
+            {
+                var targetTourRecord = context.TOURs
+                    .Where(b => b.TOUR_NAME == tour)
+                    .FirstOrDefault();
+                var targetPlaceRecord = context.TOUR_PLACE
+                    .Where(b => b.PLACE_NAME == place)
+                    .FirstOrDefault();
+                var placeToTour = new TOUR_PLACE_TO_TOUR()
+                {
+                    PLACE_TO_TOUR_ID = targetPlaceRecord.PLACE_ID,
+                    PLACE_TO_TOUR_GUID = System.Guid.NewGuid(),
+                    TOUR_GUID = targetTourRecord.TOUR_GUID,
+                    PLACE_GUID = targetPlaceRecord.PLACE_GUID,
+                    ENTERED_BY = System.Guid.NewGuid(),
+                    ENTERED_DATE_TIME = DateTime.Now,
+                    PLACE_SUMMARY_OVERRIDE = targetPlaceRecord.PLACE_SUMMARY,
+                    PLACE_DESC_OVERRIDE = targetPlaceRecord.PLACE_DESC
+
+                };
+                context.TOUR_PLACE_TO_TOUR.Add(placeToTour);
+                context.SaveChanges();
+            }
+            
+            return RedirectToAction("Index", "Home", "Places");
+        }
     }
 }

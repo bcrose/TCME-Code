@@ -42,6 +42,7 @@
     </tr>
     }
 </table>
+<h2>Enter New Tour</h2>
 <form action="/Form/TourForm" method="post" autocomplete="off">
     Tour ID:<br />
     <input type="number" name="tourId" /><br />
@@ -64,4 +65,12 @@
     Additional Info: <br />
     <input type="text" name="additionalInfo" /><br />
     <input type="submit" value="Submit Tour" />
+</form>
+<h2>Add Place To Tour</h2>
+<form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
+    Enter a Tour: <br />
+    <input type="text" name="tour" /><br />
+    Enter a Place to Add: <br />
+    <input type="text" name="place" /><br />
+    <input type="submit" value="Submit Place to Tour" />
 </form>
