@@ -13,13 +13,13 @@
     <tr>
         <th></th>
         <th>
-            DESCRIPTION
+            Name
         </th>
         <th>
-            START DATE
+            Description
         </th>
         <th>
-            END DATE
+            Tour Summary
         </th>
     </tr>
 
@@ -27,17 +27,16 @@
     {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.TOUR_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TOUR_ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.TOUR_ID }) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOUR_NAME)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TOUR_DESC)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.START_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.END_DATE)
+            @Html.DisplayFor(modelItem => item.TOUR_SUMMARY)
         </td>
     </tr>
     }
