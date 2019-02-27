@@ -44,28 +44,50 @@
 
 </table>
 
-<form action="/Form/FormOne" method="post" autocomplete="off">
-    Place ID:<br />
-    <input type="number" name="placeId" /><br />
-    Google Place Id: <br />
-    <input type="text" name="googlePlaceId" /><br />
-    Place Name: <br />
-    <input type="text" name="placeName" /><br />
-    Summary:<br />
-    <textarea name="summary" rows="10" cols="100"></textarea><br />
-    Place Description:<br />
-    <textarea name="placeDescription" rows="10" cols="100"></textarea><br />
-    Address: <br />
-    <input type="text" name="address" /><br />
-    Phone Number: <br />
-    <input type="text" name="phoneNumber" /><br />
-    Website: <br />
-    <input type="text" name="website" /><br />
-    Lattitude: <br />
-    <input type="number" name="lattitude" /><br />
-    Longitude: <br />
-    <input type="number" name="longitude" /><br />
-    <input type="submit" value="Add Place" />
-
-</form>
-
+<div class="container-form">
+    <form action="/Form/FormOne" method="post" autocomplete="off">
+        <div>
+            <span>Place ID</span>
+            <input type="number" name="placeId" />
+        </div>
+        <div>
+            <span>Google Place ID</span>
+            <input type="text" name="googlePlaceId" />
+        </div>
+        <div>
+            <span>Place Name</span>
+            <input type="text" name="placeName" /><br />
+        </div>
+        <div>
+            <span>Summary</span>
+            <textarea name="summary" rows="10" cols="100"></textarea>
+        </div>
+        <div>
+            <span>Place Description</span>
+            <textarea name="placeDescription" rows="10" cols="100"></textarea>
+        </div>
+        <div>
+            <span>Address</span>
+            <input type="text" name="address" />
+        </div>
+        <div>
+            <span>Phone Number</span>
+            <input type="text" name="phoneNumber" />
+        </div>
+        <div>
+            <span>Website</span>
+            <input type="text" name="website" />
+        </div>
+        <div>
+            <span>Lattitude</span>
+            <input type="number" name="lattitude" />
+        </div>
+        <div>
+            <span>Longitude</span>
+            <input type="number" name="longitude" />
+        </div>
+        <div id="submit">
+            <input type="submit" value="Add Place" />
+        </div>
+    </form>
+</div>

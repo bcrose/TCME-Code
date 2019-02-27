@@ -24,7 +24,7 @@ namespace Travel_Content_Management_Editor.Controllers
                 PLACE_ID = placeId,
                 PLACE_GUID = System.Guid.NewGuid(),
                 GOOGLE_PLACE_ID = googlePlaceId,
-                IS_DEFAULT_PLACE = false,
+                IS_DEFAULT_PLACE = true,
                 PLACE_NAME = placeName,
                 PLACE_SUMMARY = summary,
                 PLACE_DESC = placeDescription,
@@ -39,7 +39,7 @@ namespace Travel_Content_Management_Editor.Controllers
             };
             context.TOUR_PLACE.Add(place);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home", "Places");
+            return RedirectToAction("Places", "Home");
         }
     }
 }
