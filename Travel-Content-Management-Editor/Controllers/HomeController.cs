@@ -33,6 +33,10 @@ namespace Travel_Content_Management_Editor.Controllers
         {
             return View();
         }
+        public ActionResult createPlace()
+        {
+            return View();
+        }
 
     }
 }

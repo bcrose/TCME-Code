@@ -3,20 +3,20 @@
 }
 
 @{
-    ViewBag.Title = "Organizations";
+    ViewBag.Title = "Enter Place Info";
 }
 
-<h2>Organizations</h2>
+<h2>Enter Place Info</h2>
 
 <div class="container-form">
     <form action="/Form/FormOne" method="post" autocomplete="off">
         <div>
-            <span>Organ</span>
-            <input type="text" name="organizationName" />
+            <span>Place ID</span>
+            <input type="number" name="placeId" />
         </div>
         <div>
             <span>Google Place ID</span>
-            <input type="text" name="organizationDesc" />
+            <input type="text" name="googlePlaceId" />
         </div>
         <div>
             <span>Place Name</span>
