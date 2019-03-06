@@ -356,10 +356,10 @@
       <DependentUpon>TravelManagerModel.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Home\Places.cshtml" />
+    <Content Include="Views\Home\Organizations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tours\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
