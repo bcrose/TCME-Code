@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Enter Organization Info";
+}
+
+<h2>Enter Organization Info</h2>
+
+<div class="container-form">
+    <form action="/Form/OrganizationForm" method="post" autocomplete="off">
+        <div>
+            <span>Organization Name</span>
+            <input type="text" name="organizationName" />
+        </div>
+        <div>
+            <span>Organization Description</span>
+            <textarea name="description" rows="10" cols="100"></textarea>
+        </div>
+        <div>
+            <span>Location</span>
+            <input type="text" name="location" /><br />
+        </div>
+        <div>
+            <span>URL</span>
+            <input type="text" name="url" /><br />
+        </div>
+        <div>
+            <span>Join Code</span>
+            <input type="text" name="joinCode" />
+        </div>
+        <div>
+            <span>Contact Name</span>
+            <input type="text" name="contactName" />
+        </div>
+        <div>
+            <span>Contact Email</span>
+            <input type="text" name="contactEmail" />
+        </div>
+        <div>
+            <span>Contact Phone</span>
+            <input type="text" name="contactPhone" />
+        </div>
+        <div id="submit">
+            <input type="submit" value="Add Place" />
+        </div>
+    </form>
+</div>
+
+
+

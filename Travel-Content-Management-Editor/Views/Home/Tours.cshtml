@@ -7,7 +7,7 @@
 <h2>Tours</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", )
+    @Html.ActionLink("Create New", "createTour", "home")
 </p>
 <table class="table">
     <tr>
@@ -41,30 +41,7 @@
     </tr>
     }
 </table>
-<h2>Enter New Tour</h2>
-<form action="/Form/TourForm" method="post" autocomplete="off">
-    Tour ID:<br />
-    <input type="number" name="tourId" /><br />
-    Tour Name: <br />
-    <input type="text" name="tourName" /><br />
-    Summary:<br />
-    <textarea name="summary" rows="10" cols="100"></textarea><br />
-    Tour Description:<br />
-    <textarea name="tourDescription" rows="10" cols="100"></textarea><br />
-    URL: <br />
-    <input type="text" name="url" /><br />
-    Book Now Url: <br />
-    <input type="text" name="bookNowUrl" /><br />
-    Duration: <br />
-    <input type="text" name="duration" /><br />
-    Cost: <br />
-    <input type="text" name="cost" /><br />
-    Group Size: <br />
-    <input type="text" name="groupSize" /><br />
-    Additional Info: <br />
-    <input type="text" name="additionalInfo" /><br />
-    <input type="submit" value="Submit Tour" />
-</form>
+
 <h2>Add Place To Tour</h2>
 <form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
     Enter a Tour: <br />

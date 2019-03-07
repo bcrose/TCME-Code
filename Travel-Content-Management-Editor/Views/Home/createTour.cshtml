@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Enter Tour Info";
+}
+
+<h2>Enter Tour Info</h2>
+<div class="container-form">
+    <form action="/Form/TourForm" method="post" autocomplete="off">
+        Tour ID:<br />
+        <input type="number" name="tourId" /><br />
+        Tour Name: <br />
+        <input type="text" name="tourName" /><br />
+        Summary:<br />
+        <textarea name="summary" rows="10" cols="100"></textarea><br />
+        Tour Description:<br />
+        <textarea name="tourDescription" rows="10" cols="100"></textarea><br />
+        URL: <br />
+        <input type="text" name="url" /><br />
+        Book Now Url: <br />
+        <input type="text" name="bookNowUrl" /><br />
+        Duration: <br />
+        <input type="text" name="duration" /><br />
+        Cost: <br />
+        <input type="text" name="cost" /><br />
+        Group Size: <br />
+        <input type="text" name="groupSize" /><br />
+        Additional Info: <br />
+        <input type="text" name="additionalInfo" /><br />
+        <input type="submit" value="Submit Tour" />
+    </form>
+</div>

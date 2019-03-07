@@ -31,9 +31,18 @@ namespace Travel_Content_Management_Editor.Controllers
         }
         public ActionResult Organizations()
         {
-            return View();
+            var entities = new Models.TravelContentManagerEntities();
+            return View(entities.TOUR_ORGANIZATION.ToList());
         }
         public ActionResult createPlace()
+        {
+            return View();
+        }
+        public ActionResult createOrganization()
+        {
+            return View();
+        }
+        public ActionResult createTour()
         {
             return View();
         }

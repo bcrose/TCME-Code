@@ -64,7 +64,7 @@ namespace Travel_Content_Management_Editor.Controllers
             };
             context.TOURs.Add(tour);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home", "Places");
+            return RedirectToAction("Tours", "Home");
         }
         [HttpPost]
         public ActionResult PlaceToTourForm(string tour, string place)
@@ -94,6 +94,30 @@ namespace Travel_Content_Management_Editor.Controllers
             }
             
             return RedirectToAction("Index", "Home", "Places");
+        }
+        [HttpPost]
+        public ActionResult OrganizationForm(string organizationName, string description, string location, string url, string joinCode, string contactName, string contactEmail, string contactPhone, string groupSize, string additionalInfo)
+        {
+            var context = new TravelContentManagerEntities();
+            var organization = new TOUR_ORGANIZATION()
+            {
+                ORGANIZATION_ID = 1,
+                ORGANIZATION_GUID = System.Guid.NewGuid(),
+                ORGANIZATION_NAME = organizationName,
+                ORGANIZATION_DESC = description,
+                LOCATION = location,
+                URL = url,
+                JOIN_CODE = joinCode,
+                CONTACT_NAME = contactName,
+                CONTACT_EMAIL = contactEmail,
+                CONTACT_PHONE = contactPhone,
+                ENTERED_BY = System.Guid.NewGuid(),
+                ENTERED_DATE_TIME = DateTime.Now
+
+            };
+            context.TOUR_ORGANIZATION.Add(organization);
+            context.SaveChanges();
+            return RedirectToAction("Organizations", "home");
         }
     }
 }

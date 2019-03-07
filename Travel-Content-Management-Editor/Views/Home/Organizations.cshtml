@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Travel_Content_Management_Editor.Models.TOUR_ORGANIZATION>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -7,51 +8,42 @@
 }
 
 <h2>Organizations</h2>
+<p>
+    @Html.ActionLink("Create New", "createOrganization", "Home")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            NAME
+        </th>
+        <th>
+            DESCRIPTION
+        </th>
+        <th>
+            LOCATION
+        </th>
+    </tr>
 
-<div class="container-form">
-    <form action="/Form/FormOne" method="post" autocomplete="off">
-        <div>
-            <span>Organ</span>
-            <input type="text" name="organizationName" />
-        </div>
-        <div>
-            <span>Google Place ID</span>
-            <input type="text" name="organizationDesc" />
-        </div>
-        <div>
-            <span>Place Name</span>
-            <input type="text" name="placeName" /><br />
-        </div>
-        <div>
-            <span>Summary</span>
-            <textarea name="summary" rows="10" cols="100"></textarea>
-        </div>
-        <div>
-            <span>Place Description</span>
-            <textarea name="placeDescription" rows="10" cols="100"></textarea>
-        </div>
-        <div>
-            <span>Address</span>
-            <input type="text" name="address" />
-        </div>
-        <div>
-            <span>Phone Number</span>
-            <input type="text" name="phoneNumber" />
-        </div>
-        <div>
-            <span>Website</span>
-            <input type="text" name="website" />
-        </div>
-        <div>
-            <span>Lattitude</span>
-            <input type="number" name="lattitude" />
-        </div>
-        <div>
-            <span>Longitude</span>
-            <input type="number" name="longitude" />
-        </div>
-        <div id="submit">
-            <input type="submit" value="Add Place" />
-        </div>
-    </form>
-</div>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ORGANIZATION_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ORGANIZATION_ID }) |
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORGANIZATION_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORGANIZATION_DESC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOCATION)
+            </td>
+        </tr>
+    }
+</table>
+
+
+

@@ -358,6 +358,8 @@
     <Content Include="Views\Home\Places.cshtml" />
     <Content Include="Views\Home\Organizations.cshtml" />
     <Content Include="Views\Home\createPlace.cshtml" />
+    <Content Include="Views\Home\createOrganization.cshtml" />
+    <Content Include="Views\Home\createTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
