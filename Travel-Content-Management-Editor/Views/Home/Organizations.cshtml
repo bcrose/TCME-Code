@@ -29,8 +29,8 @@
     {
         <tr>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ORGANIZATION_ID }) |
-                @Html.ActionLink("Select", "Select", new { id = item.ORGANIZATION_ID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.ORGANIZATION_GUID }) |
+                @Html.ActionLink("Select", "Select", new { id = item.ORGANIZATION_GUID }) |
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ORGANIZATION_NAME)
@@ -44,6 +44,3 @@
         </tr>
     }
 </table>
-
-
-
