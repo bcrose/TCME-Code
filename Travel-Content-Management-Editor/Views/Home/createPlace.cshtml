@@ -33,15 +33,15 @@
         </div>
         <div>
             <span>Summary</span>
-            <textarea name="summary" rows="5" cols="100"></textarea>
+            <textarea name="summary" rows="5" cols="100" required></textarea>
         </div>
         <div>
-            <span>Place Description</span>
-            <textarea name="placeDescription" rows="5" cols="100"></textarea>
+            <span>Description</span>
+            <textarea name="placeDescription" rows="5" cols="100" required></textarea>
         </div>
         <div>
             <span>Address</span>
-            <input type="text" name="address" />
+            <input type="text" name="address" required/>
         </div>
         <div>
             <span>Phone Number</span>
@@ -50,15 +50,15 @@
         </div>
         <div>
             <span>Website</span>
-            <input type="text" name="website" />
+            <input type="url" name="website" required/>
         </div>
         <div>
             <span>Lattitude</span>
-            <input type="number" step="any" name="lattitude" />
+            <input type="number" step="any" name="lattitude" required/>
         </div>
         <div>
             <span>Longitude</span>
-            <input type="number" step="any" name="longitude" />
+            <input type="number" step="any" name="longitude" required/>
         </div>
         <div id="submit">
             <input type="submit" value="Add Place" />

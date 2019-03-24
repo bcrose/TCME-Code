@@ -8,26 +8,44 @@
 <h2>Enter Tour Info</h2>
 <div class="container-form">
     <form action="/Form/TourForm" method="post" autocomplete="off">
-        Tour ID:<br />
-        <input type="number" name="tourId" /><br />
-        Tour Name: <br />
-        <input type="text" name="tourName" /><br />
-        Summary:<br />
-        <textarea name="summary" rows="10" cols="100"></textarea><br />
-        Tour Description:<br />
-        <textarea name="tourDescription" rows="10" cols="100"></textarea><br />
-        URL: <br />
-        <input type="text" name="url" /><br />
-        Book Now Url: <br />
-        <input type="text" name="bookNowUrl" /><br />
-        Duration: <br />
-        <input type="text" name="duration" /><br />
-        Cost: <br />
-        <input type="text" name="cost" /><br />
-        Group Size: <br />
-        <input type="text" name="groupSize" /><br />
-        Additional Info: <br />
-        <input type="text" name="additionalInfo" /><br />
-        <input type="submit" value="Submit Tour" />
+        <div>
+            <span>Tour Name</span>
+            <input type="text" name="tourName" required />
+        </div>
+        <div>
+            <span>Summary</span>
+            <textarea name="summary" rows="5" cols="100" required></textarea>
+        </div>
+        <div>
+            <span>Description</span>
+            <textarea name="tourDescription" rows="5" cols="100" required></textarea>
+        </div>
+        <div>
+            <span>Website</span>
+            <input type="url" name="url" required />
+        </div>
+        <div>
+            <span>Book Now URL</span>
+            <input type="url" name="bookNowUrl" required />
+        </div>
+        <div>
+            <span>Duration</span>
+            <input type="text" name="duration" required />
+        </div>
+        <div>
+            <span>Cost</span>
+            <input type="number" step=".01" name="cost" required/>
+        </div>
+        <div>
+            <span>Group Size</span>
+            <input type="text" name="groupSize" required/>
+        </div>
+        <div>
+            <span>Additional Info</span>
+            <textarea name="additionalInfo" rows="5" cols="100" required></textarea>
+        </div>
+        <div id="submit">
+            <input type="submit" value="Add Tour" />
+        </div>
     </form>
 </div>
