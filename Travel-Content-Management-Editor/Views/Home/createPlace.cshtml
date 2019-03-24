@@ -11,14 +11,6 @@
 <div class="container-form">
     <form action="/Form/FormOne" method="post" autocomplete="off">
         <div>
-            <span>Place ID</span>
-            <input type="number" name="placeId" />
-        </div>
-        <div>
-            <span>Google Place ID</span>
-            <input type="text" name="googlePlaceId" />
-        </div>
-        <div>
             <span>Place Name</span>
             <input type="text" name="placeName" /><br />
         </div>
@@ -36,11 +28,12 @@
         </div>
         <div>
             <span>Phone Number</span>
-            <input type="text" name="phoneNumber" />
+            <input type="tel" name="phoneNumber" 
+             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
         </div>
         <div>
             <span>Website</span>
-            <input type="text" name="website" />
+            <input type="email" name="website" />
         </div>
         <div>
             <span>Lattitude</span>

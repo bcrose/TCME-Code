@@ -16,14 +16,12 @@ namespace Travel_Content_Management_Editor.Controllers
 
         }
         [HttpPost]
-        public ActionResult FormOne(decimal placeId, string googlePlaceId, string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)
+        public ActionResult FormOne(string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)
         {
             var context = new TravelContentManagerEntities();
             var place = new TOUR_PLACE()
             {
-                PLACE_ID = placeId,
                 PLACE_GUID = System.Guid.NewGuid(),
-                GOOGLE_PLACE_ID = googlePlaceId,
                 IS_DEFAULT_PLACE = true,
                 PLACE_NAME = placeName,
                 PLACE_SUMMARY = summary,
