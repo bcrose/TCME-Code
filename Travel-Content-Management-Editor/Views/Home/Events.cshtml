@@ -1,4 +1,51 @@
-﻿@{
+﻿@model IEnumerable<Travel_Content_Management_Editor.Models.TOUR_EVENT>
+
+@{
     ViewBag.Title = "Events";
 }
-<h2>@ViewBag.Title</h2>
+
+<h2>Places</h2>
+
+<p>
+    @Html.ActionLink("Create New", "createEvent", "Home")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            NAME
+        </th>
+        <th>
+            DESCRIPTION
+        </th>
+        <th>
+            START DATE
+        </th>
+        <th>
+            END DATE
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.EVENT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EVENT_ID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EVENT_TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EVENT_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.START_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.END_DATE)
+        </td>
+    </tr>
+    }
+
+</table>

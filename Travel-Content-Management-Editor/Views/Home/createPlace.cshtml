@@ -2,21 +2,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    ViewBag.Title = "Enter Place Info";
-}
-
 <h2>Enter Place Info</h2>
 
 <div class="container-form">
     <form action="/Form/PlaceForm" method="post" autocomplete="off">
         <div>
             <span>Place Name</span>
-            <input type="text" name="placeName" required/><br />
+            <input type="text" name="placeName" required /><br />
         </div>
         <div>
             <span>Category</span>
-            <select required>
+            <select name="categorySelection" required>
                 <option value="Eateries">Pubs & Eateries</option>
                 <option value="Shopping">Shopping</option>
                 <option value="Salons">Salons & Jewelers</option>
@@ -41,24 +37,24 @@
         </div>
         <div>
             <span>Address</span>
-            <input type="text" name="address" required/>
+            <input type="text" name="address" required />
         </div>
         <div>
             <span>Phone Number</span>
-            <input type="tel" name="phoneNumber" 
-             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+            <input type="tel" name="phoneNumber"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
         </div>
         <div>
             <span>Website</span>
-            <input type="url" name="website" required/>
+            <input type="url" name="website" required />
         </div>
         <div>
             <span>Lattitude</span>
-            <input type="number" step="any" name="lattitude" required/>
+            <input type="number" step="any" name="lattitude" required />
         </div>
         <div>
             <span>Longitude</span>
-            <input type="number" step="any" name="longitude" required/>
+            <input type="number" step="any" name="longitude" required />
         </div>
         <div id="submit">
             <input type="submit" value="Add Place" />

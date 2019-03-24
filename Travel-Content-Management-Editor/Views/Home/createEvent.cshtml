@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Enter Event Info</h2>
+
+<div class="container-form">
+    <form action="/Form/EventForm" method="post" autocomplete="off">
+        <div>
+            <span>Event Title</span>
+            <input type="text" name="eventTitle" required /><br />
+        </div>
+        <div>
+            <span>Description</span>
+            <textarea name="eventDescription" rows="5" cols="100" required></textarea>
+        </div>
+        <div>
+            <span>Start Date</span>
+            <input type="text" name="start" required />
+        </div>
+        <div>
+            <span>End Date</span>
+            <input type="text" name="end" required />
+        </div>
+        <div>
+            <span>Venue</span>
+            <input type="text" name="address" required />
+        </div>
+        <div>
+            <span>Lattitude</span>
+            <input type="number" step="any" name="lattitude" required />
+        </div>
+        <div>
+            <span>Longitude</span>
+            <input type="number" step="any" name="longitude" required />
+        </div>
+        <div>
+            <span>Website</span>
+            <input type="url" name="website" required />
+        </div>
+        <div>
+            <span>Age Restriction</span>
+            <input type="number" name="ageRestriction" required />
+        </div>
+        <div>
+            <span>Cost</span>
+            <input type="number" step=".01" name="cost" required />
+        </div>
+        <div>
+            <span>Contact Name</span>
+            <input type="text" name="contactName" required />
+        </div>
+        <div>
+            <span>Contact Email</span>
+            <input type="email" name="contactEmail" required />
+        </div>
+        <div>
+            <span>Contact Phone</span>
+            <input type="tel" name="contactPhone"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+        </div>
+        <div id="submit">
+            <input type="submit" value="Add Event" />
+        </div>
+    </form>
+</div>
