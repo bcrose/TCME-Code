@@ -16,7 +16,7 @@ namespace Travel_Content_Management_Editor.Controllers
 
         }
         [HttpPost]
-        public ActionResult FormOne(string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)
+        public ActionResult PlaceForm(string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)
         {
             var context = new TravelContentManagerEntities();
             var place = new TOUR_PLACE()
@@ -39,6 +39,7 @@ namespace Travel_Content_Management_Editor.Controllers
             context.SaveChanges();
             return RedirectToAction("Places", "Home");
         }
+
         [HttpPost]
         public ActionResult TourForm(decimal tourId, string tourName, string summary, string tourDescription, string url, string bookNowUrl, string duration, string cost, string groupSize, string additionalInfo)
         {

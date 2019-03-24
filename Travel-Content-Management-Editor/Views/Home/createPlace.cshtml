@@ -9,7 +9,7 @@
 <h2>Enter Place Info</h2>
 
 <div class="container-form">
-    <form action="/Form/FormOne" method="post" autocomplete="off">
+    <form action="/Form/PlaceForm" method="post" autocomplete="off">
         <div>
             <span>Place Name</span>
             <input type="text" name="placeName" /><br />
@@ -37,11 +37,11 @@
         </div>
         <div>
             <span>Lattitude</span>
-            <input type="number" name="lattitude" />
+            <input type="number" step="any" name="lattitude" />
         </div>
         <div>
             <span>Longitude</span>
-            <input type="number" name="longitude" />
+            <input type="number" step="any" name="longitude" />
         </div>
         <div id="submit">
             <input type="submit" value="Add Place" />
