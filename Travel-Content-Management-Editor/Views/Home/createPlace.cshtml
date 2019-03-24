@@ -12,15 +12,32 @@
     <form action="/Form/PlaceForm" method="post" autocomplete="off">
         <div>
             <span>Place Name</span>
-            <input type="text" name="placeName" /><br />
+            <input type="text" name="placeName" required/><br />
+        </div>
+        <div>
+            <span>Category</span>
+            <select required>
+                <option value="Eateries">Pubs & Eateries</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Salons">Salons & Jewelers</option>
+                <option value="Theater">Theaters & Venues</option>
+                <option value="Art">Museums & Art Venues</option>
+                <option value="Hotels">Hotels</option>
+                <option value="Parks">Parks</option>
+                <option value="Education">Education</option>
+                <option value="Gyms">Gyms & Pools</option>
+                <option value="Professional">Professional Services</option>
+                <option value="Banks">Banks</option>
+                <option value="Parking">Public Parking (free)</option>
+            </select>
         </div>
         <div>
             <span>Summary</span>
-            <textarea name="summary" rows="10" cols="100"></textarea>
+            <textarea name="summary" rows="5" cols="100"></textarea>
         </div>
         <div>
             <span>Place Description</span>
-            <textarea name="placeDescription" rows="10" cols="100"></textarea>
+            <textarea name="placeDescription" rows="5" cols="100"></textarea>
         </div>
         <div>
             <span>Address</span>
