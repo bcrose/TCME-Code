@@ -3,6 +3,8 @@
 }
 @{
     ViewBag.Title = "Enter Tour Info";
+    Guid orgGuid = (Guid)ViewData["selectedGUID"];
+
 }
 
 <h2>Enter Tour Info</h2>
@@ -43,6 +45,7 @@
         <div>
             <span>Additional Info</span>
             <textarea name="additionalInfo" rows="5" cols="100" required></textarea>
+            <input type='hidden' name='organGuid' value= @orgGuid />
         </div>
         <div id="submit">
             <input type="submit" value="Add Tour" />

@@ -1,13 +1,14 @@
-﻿@model IEnumerable<Travel_Content_Management_Editor.Models.TOUR_PLACE>
+﻿@model Travel_Content_Management_Editor.Models.ViewModel
 
 @{
     ViewBag.Title = "Places";
+    Guid orgGuid = (Guid)ViewData["selectedGUID"];
 }
 
 <h2>Places</h2>
 
 <p>
-    @Html.ActionLink("Create New", "createPlace", "Home")
+    @Html.ActionLink("Create New", "createPlace", new { id = orgGuid })
 </p>
 <table class="table">
     <tr>
@@ -23,25 +24,33 @@
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.orgToItem)
     {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.PLACE_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.PLACE_ID })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PLACE_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PLACE_SUMMARY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PLACE_DESC)
-        </td>
-    </tr>
+        if (item.ORGANIZATION_GUID == orgGuid)
+        {
+            foreach (var place in Model.place)
+            {
+                if (place.PLACE_GUID == item.ITEM_GUID)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = place.PLACE_ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = place.PLACE_ID })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => place.PLACE_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => place.PLACE_SUMMARY)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => place.PLACE_DESC)
+                        </td>
+                    </tr>
+                }
+            }
+        }
     }
-
 </table>
 
 

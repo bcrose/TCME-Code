@@ -8,7 +8,7 @@ using System.Web.Routing;
 
 namespace Travel_Content_Management_Editor
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {

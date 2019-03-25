@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Guid orgGuid = (Guid)ViewData["selectedGUID"];
 }
 
 <h2>Enter Place Info</h2>
@@ -55,6 +56,7 @@
         <div>
             <span>Longitude</span>
             <input type="number" step="any" name="longitude" required />
+            <input type='hidden' name='organGuid' value=@orgGuid />
         </div>
         <div id="submit">
             <input type="submit" value="Add Place" />

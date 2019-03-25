@@ -1,13 +1,15 @@
-﻿@model IEnumerable<Travel_Content_Management_Editor.Models.TOUR>
+﻿@model Travel_Content_Management_Editor.Models.ViewModel
 
 @{
     ViewBag.Title = "Tours";
+    Guid orgGuid = (Guid)ViewData["selectedGUID"];
 }
 
 <h2>Tours</h2>
+<p>@orgGuid</p>
 
 <p>
-    @Html.ActionLink("Create New", "createTour", "home")
+    @Html.ActionLink("Create New", "createTour", new { id = orgGuid })
 </p>
 <table class="table">
     <tr>
@@ -23,32 +25,61 @@
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.orgToItem)
     {
+        if (item.ORGANIZATION_GUID == orgGuid)
+        {
+            foreach (var tor in Model.tour)
+            {
+                if (tor.TOUR_GUID == item.ITEM_GUID)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = tor.TOUR_ID })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => tor.TOUR_NAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => tor.TOUR_DESC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => tor.TOUR_SUMMARY)
+                        </td>
+                    </tr>
+                }
+            }
+            
+        }
+    }
+</table>
+<table class="table">
     <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.TOUR_ID }) 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TOUR_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TOUR_DESC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TOUR_SUMMARY)
-        </td>
+        <th></th>
+        <th>
+            Name
+        </th>
     </tr>
+
+    @foreach (var item in Model.orgToItem)
+    {
+        if (item.ORGANIZATION_GUID == orgGuid)
+        {
+            foreach (var place in Model.place)
+            {
+                if (place.PLACE_GUID == item.ITEM_GUID)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink("Add Place To Tour", "placeToTour", new { id = orgGuid, pg = place.PLACE_GUID })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => place.PLACE_NAME)
+                        </td>
+                    </tr>
+                }
+            }
+        }
     }
 </table>
 
-<h2>Add Place To Tour</h2>
-<body>
-
-<form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
-    Enter a Tour: <br />
-    <input type="text" name="tour" /><br />
-    Enter a Place to Add: <br />
-    <input type="text" name="place" /><br />
-    <input type="submit" value="Submit Place to Tour" />
-</form>

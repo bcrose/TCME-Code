@@ -13,16 +13,26 @@ namespace Travel_Content_Management_Editor.Controllers
             return View();
         }
 
-        public ActionResult Places()
+        public ActionResult Places(Guid id)
         {
+            ViewData["selectedGUID"] = id;
             var entities = new Models.TravelContentManagerEntities();
-            return View(entities.TOUR_PLACE.ToList());
+            var mod = new Models.ViewModel();
+            mod.tour = entities.TOURs;
+            mod.orgToItem = entities.TOUR_ORGANIZATION_TO_ITEM;
+            mod.place = entities.TOUR_PLACE;
+            return View(mod);
         }
 
-        public ActionResult Tours()
+        public ActionResult Tours(Guid id)
         {
+            ViewData["selectedGUID"] = id;
             var entities = new Models.TravelContentManagerEntities();
-            return View(entities.TOURs.ToList());
+            var mod = new Models.ViewModel();
+            mod.tour = entities.TOURs;
+            mod.orgToItem = entities.TOUR_ORGANIZATION_TO_ITEM;
+            mod.place = entities.TOUR_PLACE;
+            return View(mod);
         }
 
         public ActionResult Events()
@@ -37,8 +47,14 @@ namespace Travel_Content_Management_Editor.Controllers
             return View(entities.TOUR_ORGANIZATION.ToList());
         }
 
-        public ActionResult createPlace()
+        public ActionResult createPlace(Guid id)
         {
+            ViewData["selectedGUID"] = id;
+            return View();
+        }
+        public ActionResult placeToTour()
+        {
+            
             return View();
         }
 
@@ -47,8 +63,9 @@ namespace Travel_Content_Management_Editor.Controllers
             return View();
         }
 
-        public ActionResult createTour()
+        public ActionResult createTour(Guid id)
         {
+            ViewData["selectedGUID"] = id;
             return View();
         }
 

@@ -16,12 +16,13 @@ namespace Travel_Content_Management_Editor.Controllers
 
         }
         [HttpPost]
-        public ActionResult PlaceForm(string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)
+        public ActionResult PlaceForm(string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude, Guid organGuid)
         {
+            var placeGuid = System.Guid.NewGuid();
             var context = new TravelContentManagerEntities();
             var place = new TOUR_PLACE()
             {
-                PLACE_GUID = System.Guid.NewGuid(),
+                PLACE_GUID = placeGuid,
                 IS_DEFAULT_PLACE = true,
                 PLACE_NAME = placeName,
                 PLACE_SUMMARY = summary,
@@ -35,9 +36,19 @@ namespace Travel_Content_Management_Editor.Controllers
                 ENTERED_DATE_TIME = DateTime.Now
 
             };
+            var orgToItem = new TOUR_ORGANIZATION_TO_ITEM
+            {
+                ORGANIZATION_TO_ITEM_ID = 1,
+                ORGANIZATION_TO_ITEM_GUID = System.Guid.NewGuid(),
+                ORGANIZATION_GUID = organGuid,
+                ITEM_GUID = placeGuid,
+                ENTERED_BY = System.Guid.NewGuid(),
+                ENTERED_DATE_TIME = DateTime.Now
+            };
             context.TOUR_PLACE.Add(place);
+            context.TOUR_ORGANIZATION_TO_ITEM.Add(orgToItem);
             context.SaveChanges();
-            return RedirectToAction("Places", "Home");
+            return RedirectToAction("Places", "Home", new { id = organGuid });
         }
 
         [HttpPost]
@@ -70,12 +81,13 @@ namespace Travel_Content_Management_Editor.Controllers
         }
 
         [HttpPost]
-        public ActionResult TourForm(string tourName, string summary, string tourDescription, string url, string bookNowUrl, string duration, string cost, string groupSize, string additionalInfo)
+        public ActionResult TourForm(string tourName, string summary, string tourDescription, string url, string bookNowUrl, string duration, string cost, string groupSize, string additionalInfo, Guid organGuid)
         {
+            var tourGuid = System.Guid.NewGuid();
             var context = new TravelContentManagerEntities();
             var tour = new TOUR()
             {
-                TOUR_GUID = System.Guid.NewGuid(),
+                TOUR_GUID = tourGuid,
                 TOUR_NAME = tourName,
                 TOUR_SUMMARY = summary,
                 TOUR_DESC = tourDescription,
@@ -89,9 +101,19 @@ namespace Travel_Content_Management_Editor.Controllers
                 ENTERED_DATE_TIME = DateTime.Now
 
             };
+            var orgToItem = new TOUR_ORGANIZATION_TO_ITEM
+            {
+                ORGANIZATION_TO_ITEM_ID = 1,
+                ORGANIZATION_TO_ITEM_GUID = System.Guid.NewGuid(),
+                ORGANIZATION_GUID = organGuid,
+                ITEM_GUID = tourGuid,
+                ENTERED_BY = System.Guid.NewGuid(),
+                ENTERED_DATE_TIME = DateTime.Now
+            };
             context.TOURs.Add(tour);
+            context.TOUR_ORGANIZATION_TO_ITEM.Add(orgToItem);
             context.SaveChanges();
-            return RedirectToAction("Tours", "Home");
+            return RedirectToAction("Tours", "Home", new { id = organGuid });
         }
         [HttpPost]
         public ActionResult PlaceToTourForm(string tour, string place)
