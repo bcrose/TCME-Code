@@ -30,7 +30,7 @@ body {
         vertical-align: top;
     }
 
-    .container-form input {
+    .container-form input, select, textarea {
         min-height: 25px;
         display: inline-block;
         width: 50%;

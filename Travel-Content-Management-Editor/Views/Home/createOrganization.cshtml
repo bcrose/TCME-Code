@@ -11,38 +11,39 @@
     <form action="/Form/OrganizationForm" method="post" autocomplete="off">
         <div>
             <span>Organization Name</span>
-            <input type="text" name="organizationName" />
+            <input type="text" name="organizationName" required/>
         </div>
         <div>
-            <span>Organization Description</span>
-            <textarea name="description" rows="10" cols="100"></textarea>
+            <span>Description</span>
+            <textarea name="description" rows="5" cols="100" required></textarea>
         </div>
         <div>
             <span>Location</span>
-            <input type="text" name="location" /><br />
+            <input type="text" name="location" required/><br />
         </div>
         <div>
-            <span>URL</span>
-            <input type="text" name="url" /><br />
+            <span>Website</span>
+            <input type="url" name="url" required/><br />
         </div>
         <div>
             <span>Join Code</span>
-            <input type="text" name="joinCode" />
+            <input type="text" name="joinCode" required/>
         </div>
         <div>
             <span>Contact Name</span>
-            <input type="text" name="contactName" />
+            <input type="text" name="contactName" required/>
         </div>
         <div>
             <span>Contact Email</span>
-            <input type="text" name="contactEmail" />
+            <input type="email" name="contactEmail" required/>
         </div>
         <div>
             <span>Contact Phone</span>
-            <input type="text" name="contactPhone" />
+            <input type="tel" name="contactPhone" 
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
         </div>
         <div id="submit">
-            <input type="submit" value="Add Place" />
+            <input type="submit" value="Add Place"/>
         </div>
     </form>
 </div>

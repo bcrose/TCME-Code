@@ -2,53 +2,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    ViewBag.Title = "Enter Place Info";
-}
-
 <h2>Enter Place Info</h2>
 
 <div class="container-form">
-    <form action="/Form/FormOne" method="post" autocomplete="off">
-        <div>
-            <span>Place ID</span>
-            <input type="number" name="placeId" />
-        </div>
-        <div>
-            <span>Google Place ID</span>
-            <input type="text" name="googlePlaceId" />
-        </div>
+    <form action="/Form/PlaceForm" method="post" autocomplete="off">
         <div>
             <span>Place Name</span>
-            <input type="text" name="placeName" /><br />
+            <input type="text" name="placeName" required /><br />
+        </div>
+        <div>
+            <span>Category</span>
+            <select name="categorySelection" required>
+                <option value="Eateries">Pubs & Eateries</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Salons">Salons & Jewelers</option>
+                <option value="Theater">Theaters & Venues</option>
+                <option value="Art">Museums & Art Venues</option>
+                <option value="Hotels">Hotels</option>
+                <option value="Parks">Parks</option>
+                <option value="Education">Education</option>
+                <option value="Gyms">Gyms & Pools</option>
+                <option value="Professional">Professional Services</option>
+                <option value="Banks">Banks</option>
+                <option value="Parking">Public Parking (free)</option>
+            </select>
         </div>
         <div>
             <span>Summary</span>
-            <textarea name="summary" rows="10" cols="100"></textarea>
+            <textarea name="summary" rows="5" cols="100" required></textarea>
         </div>
         <div>
-            <span>Place Description</span>
-            <textarea name="placeDescription" rows="10" cols="100"></textarea>
+            <span>Description</span>
+            <textarea name="placeDescription" rows="5" cols="100" required></textarea>
         </div>
         <div>
             <span>Address</span>
-            <input type="text" name="address" />
+            <input type="text" name="address" required />
         </div>
         <div>
             <span>Phone Number</span>
-            <input type="text" name="phoneNumber" />
+            <input type="tel" name="phoneNumber"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
         </div>
         <div>
             <span>Website</span>
-            <input type="text" name="website" />
+            <input type="url" name="website" required />
         </div>
         <div>
             <span>Lattitude</span>
-            <input type="number" name="lattitude" />
+            <input type="number" step="any" name="lattitude" required />
         </div>
         <div>
             <span>Longitude</span>
-            <input type="number" name="longitude" />
+            <input type="number" step="any" name="longitude" required />
         </div>
         <div id="submit">
             <input type="submit" value="Add Place" />

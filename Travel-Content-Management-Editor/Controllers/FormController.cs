@@ -16,14 +16,12 @@ namespace Travel_Content_Management_Editor.Controllers
 
         }
         [HttpPost]
-        public ActionResult FormOne(decimal placeId, string googlePlaceId, string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)
+        public ActionResult PlaceForm(string placeName, string summary, string placeDescription, string address, string phoneNumber, string website, double lattitude, double longitude)
         {
             var context = new TravelContentManagerEntities();
             var place = new TOUR_PLACE()
             {
-                PLACE_ID = placeId,
                 PLACE_GUID = System.Guid.NewGuid(),
-                GOOGLE_PLACE_ID = googlePlaceId,
                 IS_DEFAULT_PLACE = true,
                 PLACE_NAME = placeName,
                 PLACE_SUMMARY = summary,
@@ -41,13 +39,42 @@ namespace Travel_Content_Management_Editor.Controllers
             context.SaveChanges();
             return RedirectToAction("Places", "Home");
         }
+
         [HttpPost]
-        public ActionResult TourForm(decimal tourId, string tourName, string summary, string tourDescription, string url, string bookNowUrl, string duration, string cost, string groupSize, string additionalInfo)
+        public ActionResult EventForm(string eventTitle, string description, DateTime startDate, DateTime endDate, string venue, double latitude, double longitude, string website, string ageRestriction, string cost, string contactName, string contactEmail, string ContactPhone)
+        {
+            var context = new TravelContentManagerEntities();
+            var tourEvent = new TOUR_EVENT()
+            {
+                EVENT_GUID = System.Guid.NewGuid(),
+                EVENT_TITLE = eventTitle,
+                EVENT_DESC = description,
+                END_DATE = endDate,
+                START_DATE = startDate,
+                VENUE = venue,
+                LATITUDE = latitude,
+                LONGITUDE = longitude,
+                WEBSITE = website,
+                AGE_RESTRICTION = ageRestriction,
+                COST = cost,
+                CONTACT_NAME = contactName,
+                CONTACT_EMAIL = contactEmail,
+                CONTACT_PHONE = ContactPhone,
+                ENTERED_BY = System.Guid.NewGuid(),
+                ENTERED_DATE_TIME = DateTime.Now
+            };
+
+            context.TOUR_EVENT.Add(tourEvent);
+            context.SaveChanges();
+            return RedirectToAction("Events", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult TourForm(string tourName, string summary, string tourDescription, string url, string bookNowUrl, string duration, string cost, string groupSize, string additionalInfo)
         {
             var context = new TravelContentManagerEntities();
             var tour = new TOUR()
             {
-                TOUR_ID = tourId,
                 TOUR_GUID = System.Guid.NewGuid(),
                 TOUR_NAME = tourName,
                 TOUR_SUMMARY = summary,
@@ -101,7 +128,6 @@ namespace Travel_Content_Management_Editor.Controllers
             var context = new TravelContentManagerEntities();
             var organization = new TOUR_ORGANIZATION()
             {
-                ORGANIZATION_ID = 1,
                 ORGANIZATION_GUID = System.Guid.NewGuid(),
                 ORGANIZATION_NAME = organizationName,
                 ORGANIZATION_DESC = description,
