@@ -4,14 +4,19 @@
 @{
     ViewBag.Title = "Enter Organization Info";
 }
-
+<!-- Authors: Mike Bastian,
+              Ben Rose,
+              Erin Loehr
+     
+     Description: 
+-->
 <h2>Enter Organization Info</h2>
 
 <div class="container-form">
     <form action="/Form/OrganizationForm" method="post" autocomplete="off">
         <div>
             <span>Organization Name</span>
-            <input type="text" name="organizationName" required/>
+            <input type="text" name="organizationName" required />
         </div>
         <div>
             <span>Description</span>
@@ -19,31 +24,31 @@
         </div>
         <div>
             <span>Location</span>
-            <input type="text" name="location" required/><br />
+            <input type="text" name="location" required /><br />
         </div>
         <div>
             <span>Website</span>
-            <input type="url" name="url" required/><br />
+            <input type="url" name="url" required /><br />
         </div>
         <div>
             <span>Join Code</span>
-            <input type="text" name="joinCode" required/>
+            <input type="text" name="joinCode" required />
         </div>
         <div>
             <span>Contact Name</span>
-            <input type="text" name="contactName" required/>
+            <input type="text" name="contactName" required />
         </div>
         <div>
             <span>Contact Email</span>
-            <input type="email" name="contactEmail" required/>
+            <input type="email" name="contactEmail" required />
         </div>
         <div>
             <span>Contact Phone</span>
-            <input type="tel" name="contactPhone" 
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+            <input type="tel" name="contactPhone"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
         </div>
         <div id="submit">
-            <input type="submit" value="Add Place"/>
+            <input type="submit" value="Add Place" />
         </div>
     </form>
 </div>
