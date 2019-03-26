@@ -6,7 +6,6 @@
 }
 
 <h2>Tours</h2>
-<p>@orgGuid</p>
 
 <p>
     @Html.ActionLink("Create New", "createTour", new { id = orgGuid })
@@ -49,37 +48,22 @@
                     </tr>
                 }
             }
-            
         }
     }
 </table>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            Name
-        </th>
-    </tr>
+<h2>Add Place To Tour</h2>
 
-    @foreach (var item in Model.orgToItem)
-    {
-        if (item.ORGANIZATION_GUID == orgGuid)
-        {
-            foreach (var place in Model.place)
+<form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
+    <div>
+        <span>Tours</span>
+        <select name="tourSelection" required>
+            @foreach (var tour in Model.tour)
             {
-                if (place.PLACE_GUID == item.ITEM_GUID)
-                {
-                    <tr>
-                        <td>
-                            @Html.ActionLink("Add Place To Tour", "placeToTour", new { id = orgGuid, pg = place.PLACE_GUID })
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => place.PLACE_NAME)
-                        </td>
-                    </tr>
-                }
+                <option value="tours">tour.TOUR_NAME</option>
             }
-        }
-    }
-</table>
 
+
+        </select>
+    </div>
+    <input type="submit" value="Submit Place to Tour" />
+</form>
