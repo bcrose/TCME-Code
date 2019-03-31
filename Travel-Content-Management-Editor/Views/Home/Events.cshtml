@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Events";
 }
+<!-- Authors: Mike Bastian,
+              Ben Rose,
+              Erin Loehr
 
+    Description: 
+-->
 <h2>Places</h2>
 
 <p>
@@ -31,27 +36,27 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.EVENT_ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.EVENT_ID })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EVENT_TITLE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VENUE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EVENT_DESC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.START_DATE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.END_DATE)
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EVENT_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EVENT_ID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EVENT_TITLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VENUE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EVENT_DESC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.START_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.END_DATE)
+            </td>
+        </tr>
     }
 
 </table>

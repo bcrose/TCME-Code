@@ -6,7 +6,12 @@
     Guid orgGuid = (Guid)ViewData["selectedGUID"];
 
 }
+<!-- Authors: Mike Bastian,
+              Ben Rose,
+              Erin Loehr
 
+    Description: 
+-->
 <h2>Enter Tour Info</h2>
 <div class="container-form">
     <form action="/Form/TourForm" method="post" autocomplete="off">
@@ -36,16 +41,16 @@
         </div>
         <div>
             <span>Cost</span>
-            <input type="number" step=".01" name="cost" required/>
+            <input type="number" step=".01" name="cost" required />
         </div>
         <div>
             <span>Group Size</span>
-            <input type="text" name="groupSize" required/>
+            <input type="text" name="groupSize" required />
         </div>
         <div>
             <span>Additional Info</span>
             <textarea name="additionalInfo" rows="5" cols="100" required></textarea>
-            <input type='hidden' name='organGuid' value= @orgGuid />
+            <input type='hidden' name='organGuid' value=@orgGuid />
         </div>
         <div id="submit">
             <input type="submit" value="Add Tour" />

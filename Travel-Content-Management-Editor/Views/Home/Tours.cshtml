@@ -4,8 +4,14 @@
     ViewBag.Title = "Tours";
     Guid orgGuid = (Guid)ViewData["selectedGUID"];
 }
-
+<!-- Authors: Mike Bastian,
+              Ben Rose,
+              Erin Loehr
+    
+    Description: 
+-->
 <h2>Tours</h2>
+<p>@orgGuid</p>
 
 <p>
     @Html.ActionLink("Create New", "createTour", new { id = orgGuid })
@@ -48,22 +54,37 @@
                     </tr>
                 }
             }
+
         }
     }
 </table>
-<h2>Add Place To Tour</h2>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+    </tr>
 
-<form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
-    <div>
-        <span>Tours</span>
-        <select name="tourSelection" required>
-            @foreach (var tour in Model.tour)
+    @foreach (var item in Model.orgToItem)
+    {
+        if (item.ORGANIZATION_GUID == orgGuid)
+        {
+            foreach (var place in Model.place)
             {
-                <option value="tours">tour.TOUR_NAME</option>
+                if (place.PLACE_GUID == item.ITEM_GUID)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink("Add Place To Tour", "placeToTour", new { id = orgGuid, pg = place.PLACE_GUID })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => place.PLACE_NAME)
+                        </td>
+                    </tr>
+                }
             }
+        }
+    }
+</table>
 
-
-        </select>
-    </div>
-    <input type="submit" value="Submit Place to Tour" />
-</form>
