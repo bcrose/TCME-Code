@@ -3,12 +3,14 @@
 @{
     ViewBag.Title = "Tours";
     Guid orgGuid = (Guid)ViewData["selectedGUID"];
+    List<string> relatedPlaces = new List<string>();
+    List<string> relatedTours = new List<string>();
 }
 <!-- Authors: Mike Bastian,
               Ben Rose,
               Erin Loehr
-    
-    Description: 
+
+    Description:
 -->
 <h2>Tours</h2>
 <p>@orgGuid</p>
@@ -58,33 +60,51 @@
         }
     }
 </table>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            Name
-        </th>
-    </tr>
 
-    @foreach (var item in Model.orgToItem)
+@foreach (var item in Model.orgToItem)
+{
+    if (item.ORGANIZATION_GUID == orgGuid)
     {
-        if (item.ORGANIZATION_GUID == orgGuid)
+        foreach (var place in Model.place)
         {
-            foreach (var place in Model.place)
+            if (place.PLACE_GUID == item.ITEM_GUID)
             {
-                if (place.PLACE_GUID == item.ITEM_GUID)
-                {
-                    <tr>
-                        <td>
-                            @Html.ActionLink("Add Place To Tour", "placeToTour", new { id = orgGuid, pg = place.PLACE_GUID })
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => place.PLACE_NAME)
-                        </td>
-                    </tr>
-                }
+                relatedPlaces.Add(place.PLACE_NAME);
             }
         }
+        foreach (var tor in Model.tour)
+        {
+            if (tor.TOUR_GUID == item.ITEM_GUID)
+            {
+                relatedTours.Add(tor.TOUR_NAME);
+            }
+
+        }
     }
-</table>
+}
+<div class="container-form">
+    <form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
+        <div>
+            <span>Select a Tour</span>
+            <select name="tour" id="tour">
+                @foreach (var item in relatedTours)
+                {
+                    <option value=@item>@item</option>
+                }
+            </select>
+        </div>
+        <div>
+            <span>Select a Place</span>
+            <select name="place" required>
+                @foreach (var item in relatedPlaces)
+                {
+                    <option value=@item>@item</option>
+                }
+            </select>
+        </div>
+        <div id="submit">
+            <input type="submit" value="Add Place" />
+        </div>
+    </form>
+</div>
 
