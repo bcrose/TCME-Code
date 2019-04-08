@@ -28,7 +28,11 @@
             Description
         </th>
         <th>
-            Tour Summary
+        </th>
+        <th>
+        </th>
+        <th>
+            Tour Places
         </th>
     </tr>
 
@@ -51,14 +55,29 @@
                             @Html.DisplayFor(modelItem => tor.TOUR_DESC)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => tor.TOUR_SUMMARY)
+                            @foreach (var place in Model.placeToTours)
+                            {
+                                if (tor.TOUR_GUID == place.TOUR_GUID)
+                                {
+                                    foreach (var plac in Model.place)
+                                    {
+                                        if (place.PLACE_GUID == plac.PLACE_GUID)
+                                        {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => plac.PLACE_NAME)
+                                        </td>
+                                        }
+                                    }
+                                }
+                            }
                         </td>
                     </tr>
+
+                        }
+                    }
+
                 }
             }
-
-        }
-    }
 </table>
 
 @foreach (var item in Model.orgToItem)

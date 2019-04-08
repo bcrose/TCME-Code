@@ -32,6 +32,7 @@ namespace Travel_Content_Management_Editor.Controllers
             mod.tour = entities.TOURs;
             mod.orgToItem = entities.TOUR_ORGANIZATION_TO_ITEM;
             mod.place = entities.TOUR_PLACE;
+            mod.placeToTours = entities.TOUR_PLACE_TO_TOUR;
             return View(mod);
         }
 
