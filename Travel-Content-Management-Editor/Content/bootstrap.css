@@ -43,6 +43,9 @@ body {
         width: 50%;
     }
 
+.note {
+    font-size: .8em;
+}
 
 #submit {
     display: inline-block;
