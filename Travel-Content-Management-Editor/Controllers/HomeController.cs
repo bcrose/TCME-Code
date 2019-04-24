@@ -79,6 +79,18 @@ namespace Travel_Content_Management_Editor.Controllers
         {
             return View();
         }
-     
+        public ActionResult editTour(Guid id, string tourName)
+        {
+            ViewData["selectedGUID"] = id;
+            ViewData["selectedTour"] = tourName;
+            var entities = new Models.TravelContentManagerEntities();
+            var mod = new Models.ViewModel();
+            mod.tour = entities.TOURs;
+            mod.orgToItem = entities.TOUR_ORGANIZATION_TO_ITEM;
+            mod.place = entities.TOUR_PLACE;
+            mod.placeToTours = entities.TOUR_PLACE_TO_TOUR;
+            return View(mod);
+        }
+
     }
 }

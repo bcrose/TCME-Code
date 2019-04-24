@@ -116,7 +116,7 @@ namespace Travel_Content_Management_Editor.Controllers
             return RedirectToAction("Tours", "Home", new { id = organGuid });
         }
         [HttpPost]
-        public ActionResult PlaceToTourForm(string tour, string place)
+        public ActionResult PlaceToTourForm(string tour, string place, Guid organGuid)
         {
             using (var context = new TravelContentManagerEntities())
             {
@@ -141,8 +141,8 @@ namespace Travel_Content_Management_Editor.Controllers
                 context.TOUR_PLACE_TO_TOUR.Add(placeToTour);
                 context.SaveChanges();
             }
-            
-            return RedirectToAction("Index", "Home", "Places");
+
+            return RedirectToAction("editTour", "Home", new { id = organGuid });
         }
         [HttpPost]
         public ActionResult OrganizationForm(string organizationName, string description, string location, string url, string joinCode, string contactName, string contactEmail, string contactPhone, string groupSize, string additionalInfo)
@@ -166,6 +166,32 @@ namespace Travel_Content_Management_Editor.Controllers
             context.TOUR_ORGANIZATION.Add(organization);
             context.SaveChanges();
             return RedirectToAction("Organizations", "home");
+        }
+        [HttpPost]
+        public ActionResult EditTourForm(string tourName, string summary, string tourDescription, string url, string bookNowUrl, string duration, string cost, string groupSize, string additionalInfo, Guid organGuid)
+        {
+            using (var db = new TravelContentManagerEntities())
+            {
+                var result = db.TOURs
+                    .Where(b => b.TOUR_NAME == tourName)
+                    .FirstOrDefault();
+                if (result != null)
+                {
+                    result.TOUR_SUMMARY = summary;
+                    result.TOUR_DESC = tourDescription;
+                    result.URL = url;
+                    result.DURATION = duration;
+                    result.BOOK_NOW_URL = bookNowUrl;
+                    result.COST = cost;
+                    result.GROUP_SIZE = groupSize;
+                    result.ADDITIONAL_INFO = additionalInfo;
+
+                    db.SaveChanges();
+                    
+                }
+                return RedirectToAction("Tours", "home", new { id = organGuid });
+            }
+            
         }
     }
 }

@@ -1,0 +1,103 @@
+﻿@model Travel_Content_Management_Editor.Models.ViewModel
+
+@{
+    ViewBag.Title = "Edit Tour";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    Guid orgGuid = (Guid)ViewData["selectedGUID"];
+    String tourNam = (string)ViewData["selectedTour"];
+    List<string> relatedPlaces = new List<string>();
+    List<string> relatedTours = new List<string>();
+}
+
+<h2>Edit Tour</h2>
+@foreach (var item in Model.orgToItem)
+{
+    if (item.ORGANIZATION_GUID == orgGuid)
+    {
+        foreach (var place in Model.place)
+        {
+            if (place.PLACE_GUID == item.ITEM_GUID)
+            {
+                relatedPlaces.Add(place.PLACE_NAME);
+            }
+        }
+        foreach (var tor in Model.tour)
+        {
+            if (tor.TOUR_GUID == item.ITEM_GUID)
+            {
+                relatedTours.Add(tor.TOUR_NAME);
+            }
+
+        }
+    }
+}
+<div class="container-form">
+    <form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
+        <div>
+            <span>Select a Tour</span>
+            <select name="tour" id="tour">
+                @foreach (var item in relatedTours)
+                {
+                    <option value=@item>@item</option>
+                }
+            </select>
+        </div>
+        <div>
+            <span>Select a Place</span>
+            <select name="place" required>
+                @foreach (var item in relatedPlaces)
+                {
+                    <option value=@item>@item</option>
+                }
+            </select>
+            <input type='hidden' name='organGuid' value=@orgGuid />
+        </div>
+        <div id="submit">
+            <input type="submit" value="Add Place" />
+        </div>
+    </form>
+</div>
+<div class="container-form">
+    <form action="/Form/EditTourForm" method="post" autocomplete="off">
+        
+        <div>
+            <span>Summary</span>
+            <textarea name="summary" rows="5" cols="100" required></textarea>
+        </div>
+        <div>
+            <span>Description</span>
+            <textarea name="tourDescription" rows="5" cols="100" required></textarea>
+        </div>
+        <div>
+            <span>Website</span>
+            <input type="url" name="url" required />
+        </div>
+        <div>
+            <span>Book Now URL</span>
+            <input type="url" name="bookNowUrl" required />
+        </div>
+        <div>
+            <span>Duration</span>
+            <input type="text" name="duration" required />
+        </div>
+        <div>
+            <span>Cost</span>
+            <input type="number" step=".01" name="cost" required />
+        </div>
+        <div>
+            <span>Group Size</span>
+            <input type="text" name="groupSize" required />
+        </div>
+        <div>
+            <span>Additional Info</span>
+            <textarea name="additionalInfo" rows="5" cols="100" required></textarea>
+            <input type='hidden' name='organGuid' value=@orgGuid />
+            <input type='hidden' name='tourName' value=@tourNam />
+        </div>
+        <div id="submit">
+            <input type="submit" value="Add Tour" />
+        </div>
+    </form>
+</div>
+
+

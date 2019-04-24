@@ -46,7 +46,7 @@
                 {
                     <tr>
                         <td>
-                            @*@Html.ActionLink("Edit", "Edit", new { id = tor.TOUR_ID })*@
+                            @Html.ActionLink("Edit Tour", "editTour", new { id = orgGuid }, new {name = tor.TOUR_NAME})
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => tor.TOUR_NAME)
@@ -70,7 +70,7 @@
                                     }
                                 }
                             }
-                        </td>
+                 
                     </tr>
 
                         }
@@ -101,29 +101,5 @@
         }
     }
 }
-<div class="container-form">
-    <form action="/Form/PlaceToTourForm" method="post" autocomplete="off">
-        <div>
-            <span>Select a Tour</span>
-            <select name="tour" id="tour">
-                @foreach (var item in relatedTours)
-                {
-                    <option value=@item>@item</option>
-                }
-            </select>
-        </div>
-        <div>
-            <span>Select a Place</span>
-            <select name="place" required>
-                @foreach (var item in relatedPlaces)
-                {
-                    <option value=@item>@item</option>
-                }
-            </select>
-        </div>
-        <div id="submit">
-            <input type="submit" value="Add Place" />
-        </div>
-    </form>
-</div>
+
 
