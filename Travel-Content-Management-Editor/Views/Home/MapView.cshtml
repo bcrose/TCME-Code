@@ -8,10 +8,6 @@
 
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-
-<!DOCTYPE html>
-<html>
-<head>
     <style>
         /* Set the size of the div element that contains the map */
         #map {
@@ -19,16 +15,42 @@
             width: 100%; /* The width is the width of the web page */
         }
     </style>
-</head>
-<body>
-    <h3>My Google Maps Demo</h3>
+
+
+    <h3>MapView</h3>
     <div id="map"></div>
     <script>
+        var map;
         function initMap() {
-            var startlocation = { lat: -25.344, lng: 131.036 };
-            var map = new google.maps.Map(
-                document.getElementById('map'), { zoom: 4, center: startlocation });
-            var marker = new google.maps.Marker({ position: startlocation, map: map });
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 40.1934, lng: -85.3864 },
+                zoom: 7
+            });
+            var markerMuncie = new google.maps.Marker({
+                position: { lat: 40.1934, lng: -85.3864 },
+                map: map
+            });
+            var markerTwo = new google.maps.Marker({
+                position: { lat: 41.1934, lng: -85.3864 },
+                map: map
+            });
+            var contentStringMuncie = '<div id ="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h1 id="firstHeading" class="firstHeading">Hello</h1>' +
+                '<div id="bodyContent">' +
+                '<p>This should be the content area</p>';
+            var infoWindowForMuncie = new google.maps.InfoWindow({
+                content: contentStringMuncie
+            });
+            //Displays 'contentStringMuncie' when moused over the marker
+            markerMuncie.addListener('mouseover', function () {
+                infoWindowForMuncie.open(map, markerMuncie);
+            });
+            //Closes the Display for 'contentStringMuncie' when no longer moused over the marker
+            markerMuncie.addListener('mouseout', function () {
+                infoWindowForMuncie.close();
+            });
         }
     </script>
     <!--Load the API from the specified URL
@@ -38,8 +60,10 @@
     -->
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvNyUzVPp4lgZLtMbUwAot08O1YZ36M6A&callback=initMap"></script>
-</body>
-</html>
+
+
+
+
 
 
 
