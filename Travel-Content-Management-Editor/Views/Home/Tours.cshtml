@@ -5,6 +5,8 @@
     Guid orgGuid = (Guid)ViewData["selectedGUID"];
     List<string> relatedPlaces = new List<string>();
     List<string> relatedTours = new List<string>();
+    List<double?> relatedLat = new List<double?>();
+    List<double?> relatedLong = new List<double?>();
 }
 <!-- Authors: Mike Bastian,
               Ben Rose,
@@ -13,7 +15,6 @@
     Description:
 -->
 <h2>Tours</h2>
-<p>@orgGuid</p>
 
 <p>
     @Html.ActionLink("Create New", "createTour", new { id = orgGuid })
@@ -35,6 +36,29 @@
             Tour Places
         </th>
     </tr>
+    @foreach (var item in Model.orgToItem)
+    {
+        if (item.ORGANIZATION_GUID == orgGuid)
+        {
+            foreach (var place in Model.place)
+            {
+                if (place.PLACE_GUID == item.ITEM_GUID)
+                {
+                    relatedPlaces.Add(place.PLACE_NAME);
+                    relatedLong.Add(place.LONGITUDE);
+                    relatedLat.Add(place.LATITUDE);
+                }
+            }
+            foreach (var tor in Model.tour)
+            {
+                if (tor.TOUR_GUID == item.ITEM_GUID)
+                {
+                    relatedTours.Add(tor.TOUR_NAME);
+                }
+
+            }
+        }
+    }
 
     @foreach (var item in Model.orgToItem)
     {
@@ -46,7 +70,8 @@
                 {
                     <tr>
                         <td>
-                            @Html.ActionLink("Edit Tour", "editTour", new { id = orgGuid }, new {name = tor.TOUR_NAME})
+                            @Html.ActionLink("Edit Tour", "editTour", new { id = orgGuid }, new { name = tor.TOUR_NAME })
+                            @Html.ActionLink("Map View", "MapView", new {id = orgGuid })
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => tor.TOUR_NAME)
@@ -66,40 +91,20 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => plac.PLACE_NAME)
                                         </td>
-                                        }
                                     }
                                 }
                             }
-                 
-                    </tr>
-
                         }
-                    }
 
+                        </tr>
+
+                    }
                 }
+
             }
+        }
 </table>
 
-@foreach (var item in Model.orgToItem)
-{
-    if (item.ORGANIZATION_GUID == orgGuid)
-    {
-        foreach (var place in Model.place)
-        {
-            if (place.PLACE_GUID == item.ITEM_GUID)
-            {
-                relatedPlaces.Add(place.PLACE_NAME);
-            }
-        }
-        foreach (var tor in Model.tour)
-        {
-            if (tor.TOUR_GUID == item.ITEM_GUID)
-            {
-                relatedTours.Add(tor.TOUR_NAME);
-            }
 
-        }
-    }
-}
 
 

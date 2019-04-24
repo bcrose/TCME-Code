@@ -77,6 +77,7 @@ namespace Travel_Content_Management_Editor.Controllers
 
         public ActionResult MapView()
         {
+            
             return View();
         }
         public ActionResult editTour(Guid id, string tourName)
