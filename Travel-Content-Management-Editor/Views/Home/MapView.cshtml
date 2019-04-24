@@ -43,8 +43,13 @@
             var infoWindowForMuncie = new google.maps.InfoWindow({
                 content: contentStringMuncie
             });
-            markerMuncie.addListener('click', function () {
+            //Displays 'contentStringMuncie' when moused over the marker
+            markerMuncie.addListener('mouseover', function () {
                 infoWindowForMuncie.open(map, markerMuncie);
+            });
+            //Closes the Display for 'contentStringMuncie' when no longer moused over the marker
+            markerMuncie.addListener('mouseout', function () {
+                infoWindowForMuncie.close();
             });
         }
     </script>
